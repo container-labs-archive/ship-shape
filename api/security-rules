@@ -1,0 +1,19 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	function isAdmin() {
+      return get(/databases/$(database)/documents/user-settings/$(request.auth.uid)).data.isAdmin == true;
+    }
+
+    function userAccount() {
+      return get(/databases/$(database)/documents/user-settings/$(request.auth.uid)).data.accountId;
+    }
+
+    match /user-settings/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId || isAdmin();
+    }
+
+    match /accounts/{accountId} {
+      allow read, write: if request.auth != null && (accountId == userAccount() || isAdmin());
+    }
+  }
+}

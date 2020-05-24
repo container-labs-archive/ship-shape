@@ -1,0 +1,7 @@
+
+query ProfilesQuery {
+  notArchivedProfiles {
+    key
+    title
+  }
+}

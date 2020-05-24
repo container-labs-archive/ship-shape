@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+
+[packages]
+google-api-python-client = ">=0.0.0"
+google-auth-httplib2 = ">=0.0"
+google-auth-oauthlib = ">=0.0"
+pyyaml = ">=5.3.1"
+# tracking_number = "*"
+requests = "*"
+flask = "*"
+
+[dev-packages]
+pytest = "*"
+# generator = {editable = true,path = "."}
+# black = "*"
+
+[requires]
+python_version = "3.8.2"
+
+[pipenv]

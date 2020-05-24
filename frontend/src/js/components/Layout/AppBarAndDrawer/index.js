@@ -1,0 +1,286 @@
+// @flow
+
+import * as React from 'react';
+import classNames from 'classnames';
+import { push } from 'connected-react-router';
+import { NavLink } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import PersonIcon from '@material-ui/icons/Person';
+import JobsIcon from '@material-ui/icons/FormatListBulleted';
+import ResultsIcon from '@material-ui/icons/Save';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import {
+  AppBar,
+  Button,
+  Chip,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
+import Logo from '../../../../assets/logo.svg';
+import Avatar from '../../Avatar';
+import DashboardDropdown from '../DashboardDropdown';
+import type {
+  AppBarAndDrawerProps,
+  AppBarAndDrawerState,
+} from './types';
+import { styles } from './styles';
+import { logout } from '../../../redux/auth/actions';
+
+@withStyles(styles)
+class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDrawerState> {
+  state = {
+    // TODO: defaults to open first, new users might not know where to look
+    // eventually could get fancy and show this on the first login with a demo of how the use the app
+    open: false,
+    anchorEl: null,
+  };
+
+  login = () => {
+    const { dispatch } = this.props;
+    dispatch(push('/login'));
+  }
+
+  logout = () => {
+    this.setState({ anchorEl: null });
+    this.props.dispatch(logout());
+  }
+
+  goToProfile = () => {
+    const { dispatch } = this.props;
+    this.setState({ anchorEl: null });
+    dispatch(push('/profile'));
+  }
+
+  handleDrawerOpen = () => {
+    this.setState({ open: true });
+  }
+
+  handleDrawerClose = () => {
+    this.setState({ open: false });
+  }
+
+  openProfileDropdown = (event: Object) => {
+    this.setState({ anchorEl: event.currentTarget });
+  }
+
+  closeProfileDropdown = () => {
+    this.setState({ anchorEl: null });
+  }
+
+  renderAppBar = () => {
+    const {
+      classes,
+      isAuthenticated,
+      isDemo,
+      email,
+      userIsAuthenticated,
+      user,
+      disabled,
+      account,
+    } = this.props;
+    const photoURL = user ? user.photoURL : '';
+    const {
+      open,
+      anchorEl,
+    } = this.state;
+
+    return (
+      <AppBar
+        position="fixed"
+        className={classNames(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
+        <Toolbar disableGutters={!open}>
+          <IconButton
+            aria-label="Open Drawer"
+            onClick={this.handleDrawerOpen}
+            className={classNames(classes.menuButton, open && classes.hide)}
+          >
+            {!disabled
+              && <MenuIcon />
+            }
+          </IconButton>
+          <div className={classes.logoWrapper}>
+            <Logo className={classes.logo} />
+          </div>
+          {isAuthenticated && userIsAuthenticated && (
+          <div className={classes.rightNav}>
+            <Typography className={classes.accountName} variant="body1">
+              {account.name}
+            </Typography>
+            {isDemo
+            && <Chip label="DEMO" className={classes.demoChip} />
+              }
+            {user.isAccountManager
+            && <DashboardDropdown />
+              }
+            <IconButton
+              onClick={this.openProfileDropdown}
+              color="inherit"
+            >
+              <Avatar
+                photoURL={photoURL}
+                email={email}
+              />
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={this.closeProfileDropdown}
+            >
+              <MenuItem disabled>
+                <Typography variant="subtitle1">
+                  {email}
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={this.goToProfile}>
+                Profile
+              </MenuItem>
+              <MenuItem onClick={this.logout}>
+                Logout
+              </MenuItem>
+            </Menu>
+          </div>
+          )}
+          {(!isAuthenticated || !userIsAuthenticated) && !disabled && (
+          <Button onClick={this.login} className={classes.loginButton}>
+              Login
+          </Button>
+          )}
+        </Toolbar>
+      </AppBar>
+    );
+  }
+
+  renderDrawer = () => {
+    const {
+      classes,
+      isAuthenticated,
+      userIsAuthenticated,
+      isAdmin,
+    } = this.props;
+    const {
+      open,
+    } = this.state;
+
+    return (
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
+        }}
+        open={open}
+      >
+        <div className={classes.toolbar}>
+          <IconButton onClick={this.handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+        <List className={classes.list}>
+          {isAuthenticated && userIsAuthenticated && (
+            <ListItem
+              to="/home"
+              component={NavLink}
+              className={classes.navLink}
+              activeClassName={classes.activeDrawerItem}
+            >
+              <ListItemIcon>
+                <Tooltip title="Home">
+                  <HomeIcon />
+                </Tooltip>
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+
+            </ListItem>
+          )}
+        </List>
+        {isAuthenticated && userIsAuthenticated
+          && <Divider />
+        }
+        <List className={classes.list}>
+          {isAuthenticated && isAdmin && userIsAuthenticated && (
+            <ListItem
+              to="/jobs"
+              component={NavLink}
+              className={classes.navLink}
+              activeClassName={classes.activeDrawerItem}
+            >
+              <ListItemIcon>
+                <Tooltip title="Jobs">
+                  <JobsIcon />
+                </Tooltip>
+              </ListItemIcon>
+              <ListItemText primary="Jobs" />
+            </ListItem>
+          )}
+          {isAuthenticated && isAdmin && userIsAuthenticated && (
+            <ListItem
+              to="/results"
+              component={NavLink}
+              className={classes.navLink}
+              activeClassName={classes.activeDrawerItem}
+            >
+              <ListItemIcon>
+                <Tooltip title="Results">
+                  <ResultsIcon />
+                </Tooltip>
+              </ListItemIcon>
+              <ListItemText primary="Results" />
+            </ListItem>
+          )}
+          {isAuthenticated && isAdmin && userIsAuthenticated && (
+            <ListItem
+              to="/users"
+              component={NavLink}
+              className={classes.navLink}
+              activeClassName={classes.activeDrawerItem}
+            >
+              <ListItemIcon>
+                <Tooltip title="Users">
+                  <PersonIcon />
+                </Tooltip>
+              </ListItemIcon>
+              <ListItemText primary="Users" />
+            </ListItem>
+          )}
+        </List>
+      </Drawer>
+    );
+  }
+
+  render() {
+    const { classes, children, disabled } = this.props;
+
+    return (
+      <div className={classes.root}>
+        {this.renderAppBar()}
+        {!disabled
+          && this.renderDrawer()
+        }
+        <main
+          className={classNames(classes.content, {
+            [classes.contentShift]: open,
+          })}
+        >
+          {children}
+        </main>
+      </div>
+    );
+  }
+}
+
+export default AppBarAndDrawer;

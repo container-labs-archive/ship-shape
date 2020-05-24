@@ -1,0 +1,46 @@
+{
+  "rules": {
+    "app-settings": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "evaluation-files": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "evaluations": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$accountId": {
+        ".indexOn": ["userId", "done", "requestedChange", "needsAppeal"]
+      }
+    },
+    "jobs": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$accountId": {
+        ".indexOn": ["assigned", "matched"]
+      }
+    },
+    "job-files": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$accountId": {
+        ".indexOn": ["jobId"]
+      }
+    },
+    "profiles": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "profiles-ports": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "user-settings": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["activePanelMember", "accountId", "email"]
+    }
+  }
+}

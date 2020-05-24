@@ -1,0 +1,30 @@
+{
+  "targets": {
+    "libra-staging": {
+      "hosting": {
+        "staging-admin": [
+          "libra-admin-staging-test"
+        ],
+        "staging-frontend": [
+          "libra-staging"
+        ]
+      }
+    },
+    "libra-production": {
+      "hosting": {
+        "alpha-admin": [
+          "libra-alpha-admin"
+        ],
+        "alpha-frontend": [
+          "libra-alpha-2"
+        ],
+        "production-admin": [
+          "libra-admin-production2"
+        ],
+        "production-frontend": [
+          "libra-production"
+        ]
+      }
+    }
+  }
+}
