@@ -28,19 +28,6 @@
           "destination": "/index.html"
         }
       ]
-    },
-    {
-      "target": "alpha-frontend",
-      "public": "dist",
-      "rewrites": [
-        {
-          "source": "/graphql", "function": "graphqlAlpha"
-        },
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
     }
   ]
 }

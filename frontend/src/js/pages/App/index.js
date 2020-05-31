@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { compose, graphql } from 'Apollo';
+
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 // import blue from '@material-ui/core/colors/blue';
@@ -12,7 +12,7 @@ import Notifier from 'Components/Layout/Notifier';
 import type { AppProps, AppState } from 'Types';
 import createRoutes from '../../routes';
 import { saveUserSettings } from '../../redux/users/actions';
-import { userSettingsQuery } from './graphql';
+
 
 // const sentryDSN = Config.ravenFrontendPublicDSN;
 // const useSentry = process.env.NODE_ENV === 'production';
@@ -31,21 +31,19 @@ const mapStateToProps = (state) => {
   };
 };
 
+// TODO: add authenticated HOC
+
 @connect(mapStateToProps)
-@compose(graphql(userSettingsQuery, {
-  options: ({ userId }) => ({ variables: { key: userId } }),
-  skip: ownProps => !ownProps.userId,
-}))
-@queryLoader
+// @queryLoader
 class App extends React.Component<AppProps, AppState> {
-  componentDidMount() {
-    const { data, dispatch } = this.props;
-    if (data && data.user) {
-      // TODO: make sure we are actually getting this from redux later, AKA are we using it
-      dispatch(saveUserSettings({ user: data.user, account: data.account }));
-    }
-    console.log(process);
-  }
+  // componentDidMount() {
+  //   const { data, dispatch } = this.props;
+  //   if (data && data.user) {
+  //     // TODO: make sure we are actually getting this from redux later, AKA are we using it
+  //     dispatch(saveUserSettings({ user: data.user, account: data.account }));
+  //   }
+  //   console.log(process);
+  // }
 
   isAdmin = () => {
     const { data } = this.props;
@@ -114,7 +112,7 @@ class App extends React.Component<AppProps, AppState> {
       palette: {
         primary: {
           // light: '#6ec5ff',
-          main: '#009874',
+          main: '#4d148c',
           dark: '#007d60',
           // contrastText: '#fff',
         },

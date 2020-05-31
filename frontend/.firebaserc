@@ -1,28 +1,16 @@
 {
   "targets": {
-    "libra-staging": {
+    "gpt-staging": {
       "hosting": {
-        "staging-admin": [
-          "libra-admin-staging-test"
-        ],
         "staging-frontend": [
-          "libra-staging"
+          "gpt-staging"
         ]
       }
     },
-    "libra-production": {
+    "gpt-production": {
       "hosting": {
-        "alpha-admin": [
-          "libra-alpha-admin"
-        ],
-        "alpha-frontend": [
-          "libra-alpha-2"
-        ],
-        "production-admin": [
-          "libra-admin-production2"
-        ],
         "production-frontend": [
-          "libra-production"
+          "gpt-production"
         ]
       }
     }

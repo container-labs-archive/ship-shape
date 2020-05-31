@@ -28,26 +28,16 @@ const provider = new firebase.auth.GoogleAuthProvider();
 @withStyles(styles)
 @withHeader('Login', 'center')
 class Login extends Component<Props, State> {
-  componentDidMount() {
-    this.redirectIfAuthenticated();
-  }
-
-  // handleLogin = ({ username, password }) => {
-  //   const { dispatch } = this.props;
-  //   dispatch(login({
-  //     username: username.trim(),
-  //     password: password.trim(),
-  //   })).then(() => {
-  //     dispatch(push('/home'));
-  //   });
+  // componentDidMount() {
+  //   this.redirectIfAuthenticated();
   // }
 
-  redirectIfAuthenticated = () => {
-    const { isAuthenticated, dispatch } = this.props;
-    if (isAuthenticated) {
-      dispatch(push('/home'));
-    }
-  }
+  // redirectIfAuthenticated = () => {
+  //   const { isAuthenticated, dispatch } = this.props;
+  //   if (isAuthenticated) {
+  //     dispatch(push('/home'));
+  //   }
+  // }
 
   handleGoogleLogin = () => {
     const { dispatch } = this.props;
@@ -71,39 +61,10 @@ class Login extends Component<Props, State> {
     return (
       <Paper className={classes.container} elevation={24} id="loginForm" >
         <form onSubmit={handleSubmit(this.handleLogin)}>
-          {/* <div>
-            <Field
-              name="username"
-              component={TextField}
-              placeholder="Username or email"
-              className={classes.textField}
-              id="username"
-            />
-          </div>
-          <div>
-            <Field
-              name="password"
-              type="password"
-              component={TextField}
-              placeholder="Password"
-              className={classes.textField}
-              id="password"
-            />
-          </div> */}
           <div className={classes.error}>
             {error && <span>{error}</span>}
           </div>
           <div className={classes.buttons}>
-            {/* <Button
-              fullWidth
-              disabled={isLoading}
-              variant="contained"
-              color="primary"
-              type="submit"
-              id="loginSubmit"
-            >
-              Login
-            </Button> */}
             <GoogleButton handleLogin={this.handleGoogleLogin} />
           </div>
           <div className={classes.links}>

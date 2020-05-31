@@ -83,7 +83,6 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
     const {
       classes,
       isAuthenticated,
-      isDemo,
       email,
       userIsAuthenticated,
       user,
@@ -114,46 +113,41 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
             }
           </IconButton>
           <div className={classes.logoWrapper}>
-            <Logo className={classes.logo} />
+            <span className={classNames(classes.logoText, classes.logoTextWhite)}>Ship</span>
+            <span className={classes.logoText}>Shape</span>
           </div>
           {isAuthenticated && userIsAuthenticated && (
-          <div className={classes.rightNav}>
-            <Typography className={classes.accountName} variant="body1">
-              {account.name}
-            </Typography>
-            {isDemo
-            && <Chip label="DEMO" className={classes.demoChip} />
-              }
-            {user.isAccountManager
-            && <DashboardDropdown />
-              }
-            <IconButton
-              onClick={this.openProfileDropdown}
-              color="inherit"
-            >
-              <Avatar
-                photoURL={photoURL}
-                email={email}
-              />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.closeProfileDropdown}
-            >
-              <MenuItem disabled>
-                <Typography variant="subtitle1">
-                  {email}
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={this.goToProfile}>
-                Profile
-              </MenuItem>
-              <MenuItem onClick={this.logout}>
-                Logout
-              </MenuItem>
-            </Menu>
-          </div>
+            <div className={classes.rightNav}>
+              <Typography className={classes.accountName} variant="body1">
+                {account.name}
+              </Typography>
+              <IconButton
+                onClick={this.openProfileDropdown}
+                color="inherit"
+              >
+                <Avatar
+                  photoURL={photoURL}
+                  email={email}
+                />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.closeProfileDropdown}
+              >
+                <MenuItem disabled>
+                  <Typography variant="subtitle1">
+                    {email}
+                  </Typography>
+                </MenuItem>
+                <MenuItem onClick={this.goToProfile}>
+                  Profile
+                </MenuItem>
+                <MenuItem onClick={this.logout}>
+                  Logout
+                </MenuItem>
+              </Menu>
+            </div>
           )}
           {(!isAuthenticated || !userIsAuthenticated) && !disabled && (
           <Button onClick={this.login} className={classes.loginButton}>
@@ -225,21 +219,6 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
                 </Tooltip>
               </ListItemIcon>
               <ListItemText primary="Jobs" />
-            </ListItem>
-          )}
-          {isAuthenticated && isAdmin && userIsAuthenticated && (
-            <ListItem
-              to="/results"
-              component={NavLink}
-              className={classes.navLink}
-              activeClassName={classes.activeDrawerItem}
-            >
-              <ListItemIcon>
-                <Tooltip title="Results">
-                  <ResultsIcon />
-                </Tooltip>
-              </ListItemIcon>
-              <ListItemText primary="Results" />
             </ListItem>
           )}
           {isAuthenticated && isAdmin && userIsAuthenticated && (

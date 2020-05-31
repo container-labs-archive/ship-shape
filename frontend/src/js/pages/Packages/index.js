@@ -12,7 +12,7 @@ import {
   CardHeader,
 } from '@material-ui/core';
 import { push } from 'connected-react-router';
-import PackagesTable from 'Components/Packages/DataTable';
+import PackagesList from 'Components/Packages/List';
 import { compose, graphql } from 'Apollo';
 import { queryLoader } from 'HOCS';
 import { packagesQuery } from './graphql';
@@ -56,26 +56,29 @@ class Home extends Component<Props, State> {
       data,
     } = this.props;
 
+    // return (
+    //   <Card className={classes.container}>
+    //     <CardHeader>
+    //       Welcome
+    //     </CardHeader>
+    //     <CardContent>
+    //       <Typography variant="h4">
+    //         Ship Shape
+    //       </Typography>
+    //       <PackagesTable
+    //         data={data.packages}
+    //       />
+    //     </CardContent>
+    //   </Card>
+    // );
+
     return (
-      <Card className={classes.container}>
-        <CardHeader>
-          Welcome
-        </CardHeader>
-        <CardContent>
-          <Typography variant="h4">
-            Welcome to Selenity Job Evaluator
-          </Typography>
-          <PackagesTable
-            data={data.packages}
-          />
-        </CardContent>
-        <CardActions>
-          <Button variant="contained" color="primary" onClick={this.onLogin}>
-            Login
-          </Button>
-        </CardActions>
-      </Card>
-    );
+      <div>
+        <PackagesList
+          data={data.packages}
+        />
+      </div>
+    )
   }
 }
 

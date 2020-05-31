@@ -7,6 +7,9 @@ import { Loadable } from 'HOCS';
 const Home = Loadable({
   loader: () => import(/* webpackChunckName: "home" */ './pages/Home'),
 });
+const Packages = Loadable({
+  loader: () => import(/* webpackChunckName: "home" */ './pages/Packages'),
+});
 const Login = Loadable({
   loader: () => import(/* webpackChunckName: "login" */ './pages/Login'),
 });
@@ -28,7 +31,7 @@ const createRoutes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
 
-    <Route exact path="/home" component={Feeds} />
+    <Route exact path="/home" component={Packages} />
     <Route exact path="/login" component={Login} />
     <Route path="/confirm" component={ConfirmAccount} />
     <Route path="/reset" component={ResetPassword} />

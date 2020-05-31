@@ -42,13 +42,20 @@ const styles = theme => ({
   navLink: {
     color: 'inherit',
   },
-  // logoText: {
-  //   flex: 1,
-  //   fontWeight: 'bold',
-  //   color: theme.palette.primary.contrastText,
-  //   fontFamily: 'Exo, sans-serif',
-  //   fontSize: '2em',
-  // },
+  logoText: {
+    flex: 1,
+    fontWeight: 'bold',
+    // color: theme.palette.primary.contrastText,
+    color: '#ff6200',
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: '2em',
+  },
+  logoTextWhite: {
+    color: 'white',
+  },
+
+  oranage: '#ff6200',
+
   loginButton: {
     color: theme.palette.primary.contrastText,
     marginRight: 12,
@@ -134,6 +141,8 @@ const styles = theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
+
+
 });
 
 export { styles, drawerWidth };
