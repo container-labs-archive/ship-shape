@@ -14,7 +14,7 @@ const baseConfig = {
     sendgridApiKey: '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',
     basicAuthUserId: 'M9N5eHsRJpWrj7LJm2Bg0PTd4oj2',
     projectId: 'gpt-production',
-    shipEngineAPIKey: '',
+    shipEngineAPIKey: 'f6AuNHas6Pc0FXowghud+BjMfZWtcQW7WhnS9Foynzo',
   },
   staging: {
   },

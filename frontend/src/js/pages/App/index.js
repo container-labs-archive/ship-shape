@@ -113,7 +113,7 @@ class App extends React.Component<AppProps, AppState> {
         primary: {
           // light: '#6ec5ff',
           main: '#4d148c',
-          dark: '#007d60',
+          dark: '#ff6200',
           // contrastText: '#fff',
         },
         secondary: {

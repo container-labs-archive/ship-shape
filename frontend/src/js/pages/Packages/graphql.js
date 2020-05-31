@@ -1,6 +1,6 @@
 import { gql } from 'Apollo';
 
-export const packagesQuery = gql`
+const packagesQuery = gql`
   query packages {
     packages {
       carrier
@@ -17,3 +17,16 @@ export const packagesQuery = gql`
     }
   }
 `;
+
+const trackPackageMutation = gql`
+  mutation trackPackage($input: PackageCreateInput) {
+    trackPackage(input: $input) {
+      status
+    }
+  }
+`;
+
+export {
+  packagesQuery,
+  trackPackageMutation,
+};

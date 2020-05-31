@@ -12,10 +12,14 @@ import {
   CardHeader,
 } from '@material-ui/core';
 import { push } from 'connected-react-router';
+import PackagesForm from 'Components/Packages/Form'
 import PackagesList from 'Components/Packages/List';
 import { compose, graphql } from 'Apollo';
 import { queryLoader } from 'HOCS';
-import { packagesQuery } from './graphql';
+import {
+  packagesQuery,
+  trackPackageMutation,
+} from './graphql';
 import styles from './styles';
 import type { Props, State } from './types';
 
@@ -24,10 +28,15 @@ import type { Props, State } from './types';
     isAuthenticated: state.auth.isAuthenticated,
   };
 })
-@compose(graphql(packagesQuery, {
-  // options: ({ userId }) => ({ variables: { key: userId } }),
-  // skip: ownProps => !ownProps.userId,
-}))
+@compose(
+  graphql(packagesQuery, {
+    // options: ({ userId }) => ({ variables: { key: userId } }),
+    // skip: ownProps => !ownProps.userId,
+  }),
+  graphql(trackPackageMutation, {
+    name: 'trackPackage',
+  }),
+)
 @queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
@@ -48,6 +57,20 @@ class Home extends Component<Props, State> {
     } = this.props;
 
     dispatch(push('/login'));
+  }
+
+  trackPackage = (data) => {
+    console.log('tracking')
+    console.log(data);
+    const {
+      trackPackage,
+    } = this.props;
+
+    trackPackage({
+      variables: {
+        input: data,
+      },
+    });
   }
 
   render() {
@@ -74,6 +97,9 @@ class Home extends Component<Props, State> {
 
     return (
       <div>
+        <PackagesForm
+          onSubmit={this.trackPackage}
+        />
         <PackagesList
           data={data.packages}
         />
