@@ -10,18 +10,6 @@
         "source": "/graphql",
         "function": "graphql"
       },
-      {
-        "source": "/graphql",
-        "function": "graphqlAdmin"
-      },
-      {
-        "source": "/graphql",
-        "function": "graphqlAlpha"
-      },
-      {
-        "source": "/graphql",
-        "function": "graphqlAlphaAdmin"
-      }
     ]
   }
 }

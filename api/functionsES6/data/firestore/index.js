@@ -116,6 +116,9 @@ async function createWrapper(pathObject: PathObject, data: Object) {
   } = pathObject;
 
   let ref;
+  // this is when we want the id to be specific
+  // usually this is a hack around a missing key to index on in the object
+  // such as userId for the user-settings collection
   if (id) {
     ref = firestore.collection(collection).doc(id);
     return ref.set({ ...data, key: id }).then((doc) => {

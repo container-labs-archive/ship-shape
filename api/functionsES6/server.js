@@ -13,7 +13,6 @@ import {
   helmet as helmetMiddleware,
   morgan as morganMiddleware,
   compression as compressionMiddleware,
-  trustIdentifier as trustIdentifierMiddleware,
 } from './middleware';
 
 const app = express();
@@ -26,8 +25,7 @@ if (env === 'production' || env === 'alpha' || env === 'staging') {
 app.use(corsMiddleware);
 app.use(morganMiddleware);
 app.use(helmetMiddleware);
-app.use(authMiddleware);
-app.use(trustIdentifierMiddleware);
+// app.use(authMiddleware);
 app.use(compressionMiddleware);
 
 app.use('/graphql', (req, res) => {
@@ -38,7 +36,7 @@ app.use('/graphql', (req, res) => {
     schema,
     graphiql: true, // or whatever you want
     context: currentUser,
-    formatError: (error) => {
+    customFormatErrorFn: (error) => {
       if (env === 'production' || env === 'alpha' || env === 'staging') {
         Raven.captureException(error);
       }

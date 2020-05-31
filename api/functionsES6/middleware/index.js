@@ -8,7 +8,6 @@ import Raven, {
   requestHandler as ravenRequestHandler,
   errorHandler as ravenErrorHandler,
 } from './raven';
-import trustIdentifier from './trustIdentifier';
 
 const compression = compressionMiddleware();
 const helmet = helmetMiddleware();
@@ -23,5 +22,4 @@ export {
   Raven,
   ravenRequestHandler,
   ravenErrorHandler,
-  trustIdentifier,
 };
