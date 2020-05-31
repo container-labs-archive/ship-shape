@@ -11,33 +11,51 @@ import {
   admin,
 } from '../../firebase/index';
 import { sendWelcomeEmail } from '../../mailers/welcomeEmail';
+import Config from '../../config';
 import { PACKAGES_COLLECTION } from './collections';
 
-// for migration
-// we need to get a list of all users
-
-
-const getPackages = (parent, {}) => {
-
-
-    // indexQuery({
-    //   collection: PACKAGES_COLLECTION,
-    //   index: 'userId',
-    // }, 1234)
-
-    return {}
+type RequestContext = {
+  uid: string
 }
 
+// wish we could get flowtypes from graphql schemas
+type Package = {
+  carrier: String
+}
 
-const trackPackage = async (parent: any, { input } : { input: any }) => {
+type PackageCreateInput = {
+  carrier: string,
+  tracking_code: string,
+}
+
+const getPackages = async (parent, _params, { uid } : RequestContext) => {
+  console.log('we be getting packages');
+
+  // TODO: add email verified middleware?
+  // TODO: check state of graphql middleware in general, maybe move to diff JS framework
+
+  const packages = await indexQuery({
+    collection: PACKAGES_COLLECTION,
+    index: 'userId',
+  }, uid);
+
+  console.log('packages')
+  console.log(packages)
+  console.log('userId', uid)
+
+  return packages;
+};
+
+const trackPackage = async (parent: any, { input } : { input: PackageCreateInput }, { uid } : RequestContext) => {
   const {
     carrier,
-    trackingCode,
+    tracking_code: trackingCode,
   } = input;
 
-  const response = await axios.get('https://api.shipengine.com/v1/tracking?ID=12345', {
+  // TODO: abstract, blah blah blah
+  const response = await axios.get('https://api.shipengine.com/v1/tracking', {
     headers: {
-      'API-Key': 'TEST_UdhlCCzLEA6sjggCleIDCnOWB6Sy+eVDx58QKKAspq8',
+      'API-Key': Config.shipEngineAPIKey,
     },
     params: {
       carrier_code: carrier,
@@ -56,32 +74,26 @@ const trackPackage = async (parent: any, { input } : { input: any }) => {
     data,
   } = response;
 
-  const result = await createWrapper({
-    collection: PACKAGES_COLLECTION,
-  }, data);
-
-  // write to packages collection
-
-  console.log(result);
-  console.log('we be trackin');
-
-  return {
-    status: 200,
+  const record = {
+    userId: uid,
+    carrier,
+    tracking_code: trackingCode,
+    ship_engine: data,
   };
 
-  // return admin.auth().updateUser(uid, properties)
-  // .then(() => ({
-  //   key: uid,
-  //   status: 200,
-  //   message: `updated user ${uid}`,
-  // }))
-  // .catch(error => ({
-  //   status: 500,
-  //   message: `fail to update user ${uid}`,
-  //   error,
-  // }));
-
-}
+  return createWrapper({
+    collection: PACKAGES_COLLECTION,
+  }, record)
+    .then(() => ({
+      status: 200,
+      message: 'tracking started',
+    }))
+    .catch(error => ({
+      status: 500,
+      message: error,
+      error,
+    }));
+};
 
 const updatePackage = (parent, {}) => {
   // simply hits the shipengine api again
@@ -92,9 +104,6 @@ const updatePackage = (parent, {}) => {
 /**
  * Nested Object
  */
-
-
-
 
 export {
   getPackages,

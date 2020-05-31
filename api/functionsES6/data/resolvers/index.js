@@ -6,6 +6,8 @@ import * as userResolvers from './user';
 const resolvers = {
   Query: {
     user: userResolvers.getUser,
+
+    packages: packageResolvers.getPackages,
   },
 
   Mutation: {

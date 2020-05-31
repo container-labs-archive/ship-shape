@@ -27,6 +27,8 @@ input FilterBy {
 type Query {
   # users: [User]
   user(key: String!): User
+
+  packages: [Package]
 }
 
 # this schema allows the following mutation:

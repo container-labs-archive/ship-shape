@@ -14,6 +14,7 @@ const baseConfig = {
     sendgridApiKey: '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',
     basicAuthUserId: 'M9N5eHsRJpWrj7LJm2Bg0PTd4oj2',
     projectId: 'gpt-production',
+    shipEngineAPIKey: '',
   },
   staging: {
   },
@@ -30,6 +31,7 @@ const baseConfig = {
     sendgridApiKey: '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',
     basicAuthUserId: 'ymwPhGeRLwMD2CwTH6doH5vqizx2',
     projectId: 'gpt-staging',
+    shipEngineAPIKey: 'TEST_UdhlCCzLEA6sjggCleIDCnOWB6Sy+eVDx58QKKAspq8',
   },
 };
 

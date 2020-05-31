@@ -25,7 +25,7 @@ if (env === 'production' || env === 'alpha' || env === 'staging') {
 app.use(corsMiddleware);
 app.use(morganMiddleware);
 app.use(helmetMiddleware);
-// app.use(authMiddleware);
+app.use(authMiddleware);
 app.use(compressionMiddleware);
 
 app.use('/graphql', (req, res) => {

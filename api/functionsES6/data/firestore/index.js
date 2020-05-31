@@ -9,6 +9,7 @@ import type {
 type PathObject = {
   collection: string,
   id?: string,
+  index?: string,
 };
 
 async function singleWrapper(pathObject: PathObject) {
