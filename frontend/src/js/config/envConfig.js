@@ -8,7 +8,7 @@ const baseConfig = {
     passwordResetUrl: 'https://localhost:4000/#/reset',
     confirmEmailUrl: 'https://localhost:4000/#/confirm',
     ravenAPIDSN: '',
-    ravenFrontendPublicDSN: '',
+    ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
     frontendPath: 'http://localhost:4000',
   },
   staging: {
@@ -20,7 +20,7 @@ const baseConfig = {
     passwordResetUrl: 'https://localhost:4000/#/reset',
     confirmEmailUrl: 'https://localhost:4000/#/confirm',
     ravenAPIDSN: '',
-    ravenFrontendPublicDSN: '',
+    ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
     frontendPath: 'http://localhost:4000',
   },
 };

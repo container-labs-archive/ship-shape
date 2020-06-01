@@ -1,4 +1,4 @@
 [defaults]
-project=libra-frontend
+project=ship-shape-frontend
 org=container-labs
 auth.token=de3b24108b1c46b8924de1ee3a9543f0712124d4b57f4e32a65411fee895403f

@@ -9,7 +9,7 @@
       {
         "source": "/graphql",
         "function": "graphql"
-      },
+      }
     ]
   }
 }
