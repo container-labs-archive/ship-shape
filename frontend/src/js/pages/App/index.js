@@ -97,6 +97,26 @@ class App extends React.Component<AppProps, AppState> {
 
     const muiTheme = createMuiTheme(theme);
 
+    muiTheme.typography.h3 = {
+      fontSize: '1.2rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.5rem',
+      },
+      [muiTheme.breakpoints.up('md')]: {
+        fontSize: '2.4rem',
+      },
+    };
+
+    muiTheme.typography.h6 = {
+      fontSize: '1.0rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.1rem',
+      },
+      [muiTheme.breakpoints.up('md')]: {
+        fontSize: '1.2rem',
+      },
+    };
+
     return (
       <MuiThemeProvider theme={muiTheme}>
         <AppBarAndDrawer

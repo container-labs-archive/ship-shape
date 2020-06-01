@@ -84,7 +84,7 @@ class PackageList extends Component<Props, State> {
               <CardContent>
 
               <Grid container spacing={3}>
-                <Grid item xs={4}>
+                <Grid item xs={12}>
                   {/* <Typography variant="h6" component="h2">
                     Carrier
                   </Typography> */}
@@ -92,7 +92,7 @@ class PackageList extends Component<Props, State> {
                     <img src={carrierLogos[row.carrier]} alt={row.carrier} className={classes.carrierLogo} />
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   <Typography variant="h6" component="h2">
                     Tracking Number
                   </Typography>
@@ -100,7 +100,7 @@ class PackageList extends Component<Props, State> {
                     {row.tracking_code}
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   <Typography variant="h6" component="h2">
                     Estimated Delivery Date
                   </Typography>
