@@ -8,6 +8,9 @@ import { Field, reduxForm, getFormValues, change } from 'redux-form';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import {
+  InputLabel,
+} from '@material-ui/core';
 import styles from './styles';
 import type { Props, State } from './types';
 
@@ -121,7 +124,7 @@ const mapDispatchToProps = dispatch => ({
 class Form extends Component<Props, State> {
   state = {
     requesting: false,
-    carrier: null,
+    carrier: '',
   }
 
   handleStartRequest = () => {
@@ -163,21 +166,20 @@ class Form extends Component<Props, State> {
       handleSubmit,
       dispatch,
     } = this.props;
-    const { requesting } = this.state;
+    const { requesting, carrier } = this.state;
 
     return (
       <form onSubmit={handleSubmit(this.presubmit)}>
         <div>
-        <Select
-            // native
-            // value={state.age}
+          <Select
             onChange={this.handleChange}
             label="Carrier"
-            // inputProps={{
-            //   name: 'carrier',
-            //   // id: 'outlined-age-native-simple',
-            // }}
+            value={carrier}
+            displayEmpty
           >
+            <MenuItem value="">
+              <em>Select Carrier</em>
+            </MenuItem>
 
             {carriers.map((carrier) => {
               return (

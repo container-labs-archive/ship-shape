@@ -2,11 +2,18 @@
 
 const baseConfig = {
   production: {
+    firebaseStorageBucket: 'gpt-production.appspot.com',
+    firebaseDatabaseURL: 'https://gpt-production.firebaseio.com',
+    graphqlEndpoint: 'http://localhost:5000/graphql',
+    passwordResetUrl: 'https://localhost:4000/#/reset',
+    confirmEmailUrl: 'https://localhost:4000/#/confirm',
+    ravenAPIDSN: '',
+    ravenFrontendPublicDSN: '',
+    frontendPath: 'http://localhost:4000',
   },
   staging: {
   },
   local: {
-    firebaseServiceAccountFilename: 'firebase.config.staging.json',
     firebaseStorageBucket: 'gpt-staging.appspot.com',
     firebaseDatabaseURL: 'https://gpt-staging.firebaseio.com',
     graphqlEndpoint: 'http://localhost:5000/graphql',
@@ -15,16 +22,20 @@ const baseConfig = {
     ravenAPIDSN: '',
     ravenFrontendPublicDSN: '',
     frontendPath: 'http://localhost:4000',
-    adminPath: 'http://localhost:4002',
-  },
-  test: {
-    statesAccount: 'FEWBAR',
   },
 };
 
 const extendedConfig = {
   production: {
     firebaseConfig: {
+      apiKey: 'AIzaSyAeZg33RCJUa1VCqJdi2RP8dSEw-MFaAgk',
+      authDomain: 'gpt-production.firebaseapp.com',
+      databaseURL: 'https://gpt-production.firebaseio.com',
+      projectId: 'gpt-production',
+      storageBucket: 'gpt-production.appspot.com',
+      messagingSenderId: '1079941883748',
+      appId: '1:1079941883748:web:95a8e6191e77140c6f7c71',
+      measurementId: 'G-VTB7EHZ637'
     },
   },
   staging: {

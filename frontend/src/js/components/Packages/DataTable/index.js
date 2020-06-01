@@ -21,19 +21,30 @@ import type { Props, State } from './types';
 const columnData = [
   {
     id: 'createDate',
-    label: 'Create date',
+    label: 'When',
     sortable: true,
   },
   {
-    id: 'carrier',
-    label: 'Carrier',
+    id: 'country_code',
+    label: 'Country',
     sortable: true,
   },
   {
-    id: 'tracking_code',
-    label: 'Tracking Number',
+    id: 'state_province',
+    label: 'State',
     sortable: true,
   },
+  {
+    id: 'postal_code',
+    label: 'Postal Code',
+    sortable: true,
+  },
+  {
+    id: 'description',
+    label: 'Description',
+    sortable: true,
+  },
+
 ];
 @withStyles(styles)
 class JobsDataTable extends Component<Props, State> {
@@ -83,10 +94,6 @@ class JobsDataTable extends Component<Props, State> {
     const {
       title,
       onAdd,
-      onEdit,
-      onDelete,
-      onAssign,
-      onSchedule,
       classes,
       addButton,
       isUnmatched,
@@ -97,30 +104,25 @@ class JobsDataTable extends Component<Props, State> {
 
     const { data, page, order, orderBy, rowsPerPage } = this.state;
 
+    // 2020-05-30T10:09:59Z
+
     return (
       <DataTable
         data={data}
-        loading={loading}
-        addButton={addButton}
-        onAdd={onAdd}
         columnData={columnData}
-        order={order}
-        orderBy={orderBy}
         onRequestSort={this.handleRequestSort}
-        emptyMessage="There are no jobs in the queue."
-        onChangePage={this.handleChangePage}
-        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+        emptyMessage="No events yet for this package."
         page={page}
-        rowsPerPage={rowsPerPage}
         title={title}
       >
         {data && data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((dt, index) => (
             <TableRow hover key={dt.key} jest={`row-${dt.jobTitle}`}>
-              <TableCell>{moment(new Date(parseInt(dt.createDate))).format('YYYY-MM-DD')}</TableCell>
-              <TableCell>{dt.carrier}</TableCell>
-              <TableCell>{dt.tracking_code}</TableCell>
-              <TableCell>{dt.recordNumber}</TableCell>
+              <TableCell>{moment(dt.occurred_at).format('MM/DD/YY HH:MM')}</TableCell>
+              <TableCell>{dt.country_code}</TableCell>
+              <TableCell>{dt.state_province}</TableCell>
+              <TableCell>{dt.postal_code}</TableCell>
+              <TableCell>{dt.description}</TableCell>
             </TableRow>
           ))}
       </DataTable>

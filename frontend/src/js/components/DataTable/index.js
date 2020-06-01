@@ -46,10 +46,12 @@ class DataTable extends React.Component<Props> {
 
     return (
       <Paper className={classes.container}>
-        <TableToolbar
-          title={title}
-          onAdd={onAdd}
-        />
+        {title && (
+          <TableToolbar
+            title={title}
+            onAdd={onAdd}
+          />
+        )}
         <div className={classes.tableWrapper}>
           <Table className={classes.table}>
             <TableHead
@@ -75,21 +77,23 @@ class DataTable extends React.Component<Props> {
               )}
               {!loading && children}
             </TableBody>
-            <TableFooter>
-              <TableRow>
-                {data && (
-                  <TablePagination
-                    colSpan={7}
-                    page={page}
-                    count={data.length}
-                    rowsPerPage={rowsPerPage}
-                    rowsPerPageOptions={[25, 50, 100]}
-                    onChangePage={onChangePage}
-                    onChangeRowsPerPage={onChangeRowsPerPage}
-                  />
-                )}
-              </TableRow>
-            </TableFooter>
+            {rowsPerPage && (
+                          <TableFooter>
+                          <TableRow>
+                            {data && (
+                              <TablePagination
+                                colSpan={7}
+                                page={page}
+                                count={data.length}
+                                rowsPerPage={rowsPerPage}
+                                rowsPerPageOptions={[25, 50, 100]}
+                                onChangePage={onChangePage}
+                                onChangeRowsPerPage={onChangeRowsPerPage}
+                              />
+                            )}
+                          </TableRow>
+                        </TableFooter>
+            )}
           </Table>
         </div>
       </Paper>

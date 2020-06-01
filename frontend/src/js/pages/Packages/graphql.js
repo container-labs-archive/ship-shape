@@ -9,9 +9,14 @@ const packagesQuery = gql`
       ship_engine {
         status_code
         status_description
+        estimated_delivery_date
 
         events {
           description
+          occurred_at
+          country_code
+          state_province
+          postal_code
         }
       }
     }
