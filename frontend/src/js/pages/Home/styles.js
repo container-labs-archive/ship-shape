@@ -1,6 +1,6 @@
 const styles = {
   container: {
-    width: '500px',
+    maxWidth: '500px',
     // height: 'calc(100vh - 112px)',
     // display: 'flex',
     padding: '20px',

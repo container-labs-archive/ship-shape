@@ -125,6 +125,7 @@ class Form extends Component<Props, State> {
   state = {
     requesting: false,
     carrier: '',
+    trackingCode: '',
   }
 
   handleStartRequest = () => {
@@ -141,6 +142,12 @@ class Form extends Component<Props, State> {
     });
   }
 
+  handleCodeChange = (ev) => {
+    this.setState({
+      trackingCode: ev.target.value,
+    });
+  }
+
   // hack w/ carrier state to make the select dropdown easier to work with
   // ideally this is integrated into the react redux form
   presubmit = (data) => {
@@ -149,10 +156,11 @@ class Form extends Component<Props, State> {
     } = this.props;
     const {
       carrier,
+      trackingCode,
     } = this.state;
     const merged = {
-      ...data,
       carrier,
+      tracking_code: trackingCode,
     };
 
     onSubmit(merged);
@@ -166,11 +174,11 @@ class Form extends Component<Props, State> {
       handleSubmit,
       dispatch,
     } = this.props;
-    const { requesting, carrier } = this.state;
+    const { requesting, carrier, trackingCode } = this.state;
 
     return (
       <form onSubmit={handleSubmit(this.presubmit)}>
-        <div>
+        <div key="f1">
           <Select
             onChange={this.handleChange}
             label="Carrier"
@@ -182,28 +190,31 @@ class Form extends Component<Props, State> {
             </MenuItem>
 
             {carriers.map((carrier) => {
+              const rowKey = `c-${carrier.code}`
               return (
-                <MenuItem value={carrier.code} >{carrier.name}</MenuItem>
+                <MenuItem value={carrier.code} key={rowKey}>{carrier.name}</MenuItem>
               )
             })}
           </Select>
+
         </div>
-        <div>
-          <Field
-            name="tracking_code"
+        <br />
+        <div key="f2">
+          <TextField
+            id="outlined-password-input"
             label="Tracking Code"
-            component={TextField}
-            className={classes.field}
-            id="tracking_code"
-            value="61299989049143570764"
+            autoComplete="current-password"
+            variant="outlined"
+            value={trackingCode}
+            onChange={this.handleCodeChange}
           />
         </div>
-        <div className={classes.buttons}>
+        <div className={classes.buttons} key="f3">
           <Button
-            type="submit"
             color="primary"
             variant="contained"
             disabled={requesting || submitting}
+            onClick={this.presubmit}
             id="submitJob"
           >
             Track Package

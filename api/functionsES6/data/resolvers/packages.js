@@ -39,10 +39,6 @@ const getPackages = async (parent, _params, { uid } : RequestContext) => {
     index: 'userId',
   }, uid);
 
-  console.log('packages')
-  console.log(packages)
-  console.log('userId', uid)
-
   return packages;
 };
 

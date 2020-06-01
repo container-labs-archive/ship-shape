@@ -57,9 +57,7 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
       dispatch,
     } = this.props;
     this.setState({ anchorEl: null });
-    dispatch(logout()).then(() => {
-      dispatch(push('/'));
-    });
+    dispatch(logout());
   }
 
   goToProfile = () => {

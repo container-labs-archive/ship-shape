@@ -3,6 +3,7 @@ import { gql } from 'Apollo';
 const packagesQuery = gql`
   query packages {
     packages {
+      key
       carrier
       tracking_code
 

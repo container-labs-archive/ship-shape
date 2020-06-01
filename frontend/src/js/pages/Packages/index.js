@@ -41,25 +41,6 @@ import type { Props, State } from './types';
 @queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
-  // componentDidMount() {
-  //   const {
-  //     isAuthenticated,
-  //     dispatch,
-  //   } = this.props;
-
-  //   if (isAuthenticated) {
-  //     dispatch(push('/home'));
-  //   }
-  // }
-
-  onLogin = () => {
-    const {
-      dispatch,
-    } = this.props;
-
-    dispatch(push('/login'));
-  }
-
   trackPackage = (json) => {
     const {
       trackPackage,
@@ -81,22 +62,6 @@ class Home extends Component<Props, State> {
       data,
     } = this.props;
 
-    // return (
-    //   <Card className={classes.container}>
-    //     <CardHeader>
-    //       Welcome
-    //     </CardHeader>
-    //     <CardContent>
-    //       <Typography variant="h4">
-    //         Ship Shape
-    //       </Typography>
-    //       <PackagesTable
-    //         data={data.packages}
-    //       />
-    //     </CardContent>
-    //   </Card>
-    // );
-
     return (
       <div>
         <PackagesForm
@@ -106,7 +71,7 @@ class Home extends Component<Props, State> {
           data={data.packages}
         />
       </div>
-    )
+    );
   }
 }
 

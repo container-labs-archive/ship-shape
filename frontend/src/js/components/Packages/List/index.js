@@ -77,10 +77,10 @@ class PackageList extends Component<Props, State> {
             },
           } = row;
 
-
+          const rowKey = `pk-${row.key}`;
 
           return (
-            <Card className={classes.root}>
+            <Card className={classes.root} key={rowKey} >
               <CardContent>
 
               <Grid container spacing={3}>

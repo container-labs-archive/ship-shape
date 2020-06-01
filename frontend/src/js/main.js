@@ -17,7 +17,7 @@ const sentryConfig = {
   environment: process.env.NODE_BUILD_ENV,
 };
 
-if (useSentry) {
+if (useSentry || true) {
   Sentry.init({
     ...sentryConfig,
   });

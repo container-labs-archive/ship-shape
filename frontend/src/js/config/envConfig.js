@@ -7,11 +7,13 @@ const baseConfig = {
     graphqlEndpoint: 'http://localhost:5000/graphql',
     passwordResetUrl: 'https://localhost:4000/#/reset',
     confirmEmailUrl: 'https://localhost:4000/#/confirm',
-    ravenAPIDSN: '',
     ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
     frontendPath: 'http://localhost:4000',
   },
   staging: {
+    firebaseStorageBucket: 'gpt-staging.appspot.com',
+    firebaseDatabaseURL: 'https://gpt-staging.firebaseio.com',
+    ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
   },
   local: {
     firebaseStorageBucket: 'gpt-staging.appspot.com',
@@ -19,7 +21,6 @@ const baseConfig = {
     graphqlEndpoint: 'http://localhost:5000/graphql',
     passwordResetUrl: 'https://localhost:4000/#/reset',
     confirmEmailUrl: 'https://localhost:4000/#/confirm',
-    ravenAPIDSN: '',
     ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
     frontendPath: 'http://localhost:4000',
   },

@@ -19,7 +19,6 @@ import { packagesQuery } from './graphql';
 import styles from './styles';
 import type { Props, State } from './types';
 import GoogleButton from './GoogleButton';
-import { firebaseAuth, provider } from '../../redux/firebase/firebase';
 import {
   login,
 } from '../../redux/auth/actions';
@@ -29,50 +28,18 @@ import {
     isAuthenticated: state.auth.isAuthenticated,
   };
 })
-// @compose(graphql(packagesQuery, {
-//   // options: ({ userId }) => ({ variables: { key: userId } }),
-//   // skip: ownProps => !ownProps.userId,
-// }))
-@queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
-  componentDidUpdate(prevProps) {
-    const {
-      isAuthenticated,
-      dispatch,
-    } = this.props;
-
-    if (isAuthenticated) {
-      dispatch(push('/home'));
-    }
-  }
-
-  // onLogin = () => {
+  // componentDidUpdate(prevProps) {
   //   const {
+  //     isAuthenticated,
   //     dispatch,
   //   } = this.props;
 
-  //   dispatch(push('/login'));
+  //   if (isAuthenticated) {
+  //     dispatch(push('/home'));
+  //   }
   // }
-
-  onLogout = () => {
-    const {
-      dispatch,
-    } = this.props;
-
-    firebaseAuth.signOut().then(() => {
-      // Sign-out successful.
-      console.log('signout');
-      // window.reload();
-      // dispatch({
-      //   signout
-      // })
-
-    }).catch((error) => {
-      // An error happened.
-      console.log(error);
-    });
-  }
 
   handleGoogleLogin = () => {
     const { dispatch } = this.props;
@@ -83,9 +50,13 @@ class Home extends Component<Props, State> {
   render() {
     const {
       classes,
-      data,
       isAuthenticated,
+      dispatch,
     } = this.props;
+
+    if (isAuthenticated) {
+      dispatch(push('/home'));
+    }
 
     return (
       <Card className={classes.container}>
