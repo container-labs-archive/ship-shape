@@ -16,6 +16,7 @@ import {
   TOKEN,
   tokenFromAuth,
 } from './tokens';
+import { provider } from '../firebase/firebase';
 
 const requestLogin = () => ({
   type: LOGIN_REQUEST,
@@ -36,7 +37,7 @@ export const loginError = error => ({
 
 export const login = creds => (dispatch) => {
   dispatch(requestLogin());
-  return firebaseAuth.signInWithEmailAndPassword(creds.username, creds.password)
+  return firebaseAuth.signInWithPopup(provider)
     .then((result) => {
       let tokenObject = {};
       return tokenFromAuth(result.user)

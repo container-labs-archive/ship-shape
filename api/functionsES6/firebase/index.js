@@ -20,6 +20,7 @@ if (env === 'staging' || env === 'alpha' || env === 'production') {
     credential: admin.credential.applicationDefault(),
     databaseURL: Config.firebaseDatabaseURL,
     storageBucket: Config.firebaseStorageBucket,
+    projectId: Config.projectId,
   });
 }
 

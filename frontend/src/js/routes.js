@@ -10,9 +10,6 @@ const Home = Loadable({
 const Packages = Loadable({
   loader: () => import(/* webpackChunckName: "home" */ './pages/Packages'),
 });
-const Login = Loadable({
-  loader: () => import(/* webpackChunckName: "login" */ './pages/Login'),
-});
 const Settings = Loadable({
   loader: () => import(/* webpackChunckName: "settings" */ './pages/Settings'),
 });
@@ -30,9 +27,7 @@ const FourOhFour = Loadable({
 const createRoutes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-
     <Route exact path="/home" component={Packages} />
-    <Route exact path="/login" component={Login} />
     <Route path="/confirm" component={ConfirmAccount} />
     <Route path="/reset" component={ResetPassword} />
     <Route component={FourOhFour} />

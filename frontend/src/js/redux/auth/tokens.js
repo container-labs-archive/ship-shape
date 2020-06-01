@@ -2,7 +2,7 @@
 
 import { firebaseAuth } from '../firebase/firebase';
 
-const TOKEN = `libra_token_${process.env.NODE_BUILD_ENV}`;
+const TOKEN = `ship_it_token_${process.env.NODE_BUILD_ENV}`;
 
 /**
  * grab the token

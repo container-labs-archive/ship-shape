@@ -59,7 +59,7 @@ const errorLink = onError((args) => {
   if (networkError) {
     if (networkError.statusCode === 401) {
       removeTokenFromStorage();
-      location.reload();
+      // location.reload();
     }
     if (process.env.NODE_ENV === 'staging') {
       console.error(`[Network error]: ${networkError}`);
@@ -73,6 +73,7 @@ const errorLink = onError((args) => {
 const authMiddleware = new ApolloLink((operation, forward) => {
   Logger.log('authMiddleware', operation, forward);
   const token = authTokenFromStorage();
+  console.log('auth middleware', token);
 
   if (token !== null) {
     operation.setContext({

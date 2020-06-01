@@ -137,7 +137,6 @@ class App extends React.Component<AppProps, AppState> {
 
     const muiTheme = createMuiTheme(theme);
 
-
     return (
       <MuiThemeProvider theme={muiTheme}>
         <AppBarAndDrawer
@@ -150,7 +149,7 @@ class App extends React.Component<AppProps, AppState> {
           user={user}
           disabled={!isAuthenticated}
           token={token}
-          account={account}
+          disableDrawer
         >
           {/* {useSentry && (
             <Raven

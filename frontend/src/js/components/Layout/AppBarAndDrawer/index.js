@@ -53,8 +53,13 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
   }
 
   logout = () => {
+    const {
+      dispatch,
+    } = this.props;
     this.setState({ anchorEl: null });
-    this.props.dispatch(logout());
+    dispatch(logout()).then(() => {
+      dispatch(push('/'));
+    });
   }
 
   goToProfile = () => {
@@ -88,6 +93,7 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
       user,
       disabled,
       account,
+      disableDrawer,
     } = this.props;
     const photoURL = user ? user.photoURL : '';
     const {
@@ -108,7 +114,7 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
             onClick={this.handleDrawerOpen}
             className={classNames(classes.menuButton, open && classes.hide)}
           >
-            {!disabled
+            {!disableDrawer
               && <MenuIcon />
             }
           </IconButton>
@@ -116,11 +122,8 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
             <span className={classNames(classes.logoText, classes.logoTextWhite)}>Ship</span>
             <span className={classes.logoText}>Shape</span>
           </div>
-          {isAuthenticated && userIsAuthenticated && (
+          {isAuthenticated && (
             <div className={classes.rightNav}>
-              <Typography className={classes.accountName} variant="body1">
-                {account.name}
-              </Typography>
               <IconButton
                 onClick={this.openProfileDropdown}
                 color="inherit"
@@ -140,19 +143,14 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
                     {email}
                   </Typography>
                 </MenuItem>
-                <MenuItem onClick={this.goToProfile}>
+                {/* <MenuItem onClick={this.goToProfile}>
                   Profile
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem onClick={this.logout}>
                   Logout
                 </MenuItem>
               </Menu>
             </div>
-          )}
-          {(!isAuthenticated || !userIsAuthenticated) && !disabled && (
-          <Button onClick={this.login} className={classes.loginButton}>
-              Login
-          </Button>
           )}
         </Toolbar>
       </AppBar>
@@ -242,12 +240,17 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
   }
 
   render() {
-    const { classes, children, disabled } = this.props;
+    const {
+      classes,
+      children,
+      disabled,
+      disableDrawer,
+    } = this.props;
 
     return (
       <div className={classes.root}>
         {this.renderAppBar()}
-        {!disabled
+        {!disableDrawer
           && this.renderDrawer()
         }
         <main

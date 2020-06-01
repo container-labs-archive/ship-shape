@@ -11,14 +11,15 @@ const authenticate = (req, res, next) => {
   const { host, referer } = req.headers;
 
   if (!authHeader) {
-    // HACK to not look for auth header for confirming an account
-    if (host === 'localhost:5000' || referer && referer.indexOf('confirm') >= 0) {
-      req.currentUser = {
-        email: 'basic',
-        uid: Config.basicAuthUserId,
-      };
-      return next();
-    }
+    // console.log('no auth header');
+    // // HACK to not look for auth header for confirming an account
+    // if (host === 'localhost:5000' || referer && referer.indexOf('confirm') >= 0) {
+    //   req.currentUser = {
+    //     email: 'basic',
+    //     uid: Config.basicAuthUserId,
+    //   };
+    //   return next();
+    // }
 
     return next(httpError(401, "Missing 'Authorization' header."));
   }
@@ -40,6 +41,7 @@ const authenticate = (req, res, next) => {
         return next(httpError(401, 'Bearer token is not valid for this project'));
       });
   } else if (authType.indexOf('Basic') === 0) {
+    // console.log('basic auth')
     if (token === base64encodedBasicAuth) {
       req.currentUser = {
         email: 'basic',

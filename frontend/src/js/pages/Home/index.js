@@ -18,20 +18,25 @@ import { queryLoader } from 'HOCS';
 import { packagesQuery } from './graphql';
 import styles from './styles';
 import type { Props, State } from './types';
+import GoogleButton from './GoogleButton';
+import { firebaseAuth, provider } from '../../redux/firebase/firebase';
+import {
+  login,
+} from '../../redux/auth/actions';
 
 @connect((state) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
   };
 })
-@compose(graphql(packagesQuery, {
-  // options: ({ userId }) => ({ variables: { key: userId } }),
-  // skip: ownProps => !ownProps.userId,
-}))
+// @compose(graphql(packagesQuery, {
+//   // options: ({ userId }) => ({ variables: { key: userId } }),
+//   // skip: ownProps => !ownProps.userId,
+// }))
 @queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
-  componentDidMount() {
+  componentDidUpdate(prevProps) {
     const {
       isAuthenticated,
       dispatch,
@@ -42,37 +47,55 @@ class Home extends Component<Props, State> {
     }
   }
 
-  onLogin = () => {
+  // onLogin = () => {
+  //   const {
+  //     dispatch,
+  //   } = this.props;
+
+  //   dispatch(push('/login'));
+  // }
+
+  onLogout = () => {
     const {
       dispatch,
     } = this.props;
 
-    dispatch(push('/login'));
+    firebaseAuth.signOut().then(() => {
+      // Sign-out successful.
+      console.log('signout');
+      // window.reload();
+      // dispatch({
+      //   signout
+      // })
+
+    }).catch((error) => {
+      // An error happened.
+      console.log(error);
+    });
+  }
+
+  handleGoogleLogin = () => {
+    const { dispatch } = this.props;
+
+    dispatch(login());
   }
 
   render() {
     const {
       classes,
       data,
+      isAuthenticated,
     } = this.props;
 
     return (
       <Card className={classes.container}>
-        <CardHeader>
-          Welcome
-        </CardHeader>
         <CardContent>
-          <Typography variant="h4">
-            Welcome to Selenity Job Evaluator
+          <Typography variant="h5">
+            Get ready to ship your pants.
           </Typography>
-          <PackagesTable
-            data={data.packages}
-          />
         </CardContent>
         <CardActions>
-          <Button variant="contained" color="primary" onClick={this.onLogin}>
-            Login
-          </Button>
+          <GoogleButton handleLogin={this.handleGoogleLogin} />
         </CardActions>
       </Card>
     );

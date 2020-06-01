@@ -72,7 +72,7 @@ class GoogleButton extends React.Component {
                 </g>
           </svg>
         </SvgIcon>
-        Google Login
+        Login
       </Button>
     );
   }

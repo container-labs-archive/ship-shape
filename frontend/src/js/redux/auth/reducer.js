@@ -60,3 +60,8 @@ export default function reducer(state = new Auth(), action) {
     }
   }
 }
+
+
+export {
+  Auth,
+};

@@ -11,6 +11,15 @@ const history = require("history").createBrowserHistory();
 
 import { apolloErrorToaster } from 'Middleware';
 import reducers from './reducers';
+import { Auth } from './redux/auth/reducer';
+
+function loadState() {
+  return {
+    "auth": new Auth(),
+  }
+}
+
+const persistedState = loadState();
 
 
 
@@ -27,7 +36,7 @@ const middleWares = [
 ].filter(Boolean);
 
 const enhancer = composeWithDevTools(applyMiddleware(...middleWares));
-const store = createStore(reducers(history), enhancer);
+const store = createStore(reducers(history), persistedState, enhancer);
 
 export default store;
 export { history };

@@ -40,6 +40,14 @@ const extendedConfig = {
   },
   staging: {
     firebaseConfig: {
+      apiKey: 'AIzaSyDH7zNIogyj8G81Ew5GlGrkZvnIxbB-kcs',
+      authDomain: 'gpt-staging.firebaseapp.com',
+      databaseURL: 'https://gpt-staging.firebaseio.com',
+      projectId: 'gpt-staging',
+      storageBucket: 'gpt-staging.appspot.com',
+      messagingSenderId: '736177410254',
+      appId: '1:736177410254:web:c1b1085d3a878c1064c09f',
+      measurementId: 'G-H4DP540LH0',
     },
   },
   local: {

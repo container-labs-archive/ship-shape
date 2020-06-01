@@ -1,5 +1,4 @@
 import {
-  authenticated,
   refetchOnMount,
   checkPermission,
   requireAdmin,
@@ -11,6 +10,7 @@ import withHeader from './withHeader';
 import withFilters from './withFilters';
 import Loadable from './Loadable';
 import Loader from './Loader';
+import authenticated from './authenticated';
 
 export {
   authenticated,

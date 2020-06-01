@@ -15,7 +15,7 @@ import { push } from 'connected-react-router';
 import PackagesForm from 'Components/Packages/Form'
 import PackagesList from 'Components/Packages/List';
 import { compose, graphql } from 'Apollo';
-import { queryLoader } from 'HOCS';
+import { authenticated, queryLoader } from 'HOCS';
 import {
   packagesQuery,
   trackPackageMutation,
@@ -28,6 +28,7 @@ import type { Props, State } from './types';
     isAuthenticated: state.auth.isAuthenticated,
   };
 })
+@authenticated
 @compose(
   graphql(packagesQuery, {
     // options: ({ userId }) => ({ variables: { key: userId } }),
@@ -40,16 +41,16 @@ import type { Props, State } from './types';
 @queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
-  componentDidMount() {
-    const {
-      isAuthenticated,
-      dispatch,
-    } = this.props;
+  // componentDidMount() {
+  //   const {
+  //     isAuthenticated,
+  //     dispatch,
+  //   } = this.props;
 
-    if (isAuthenticated) {
-      dispatch(push('/home'));
-    }
-  }
+  //   if (isAuthenticated) {
+  //     dispatch(push('/home'));
+  //   }
+  // }
 
   onLogin = () => {
     const {
@@ -59,17 +60,18 @@ class Home extends Component<Props, State> {
     dispatch(push('/login'));
   }
 
-  trackPackage = (data) => {
-    console.log('tracking')
-    console.log(data);
+  trackPackage = (json) => {
     const {
       trackPackage,
+      data,
     } = this.props;
 
     trackPackage({
       variables: {
-        input: data,
+        input: json,
       },
+    }).then(() => {
+      data.refetch();
     });
   }
 
