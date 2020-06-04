@@ -1,2 +1,0 @@
-export const SELECT_USER = 'SELECT_USER';
-export const SAVE_USER_SETTINGS = 'SAVE_USER_SETTINGS';

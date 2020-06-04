@@ -92,8 +92,8 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
       disabled,
       account,
       disableDrawer,
+      photoURL,
     } = this.props;
-    const photoURL = user ? user.photoURL : '';
     const {
       open,
       anchorEl,

@@ -16,6 +16,7 @@ const getTokenObject = (user: Object) =>
       uid: user.uid,
       email: user.email,
       timestamp: new Date().getTime(),
+      photoURL: user.photoURL,
       token,
     }));
 
@@ -25,6 +26,7 @@ const tokenFromAuth = (user: Object) => {
       uid: user.uid,
       email: user.email,
       timestamp: new Date().getTime(),
+      photoURL: user.photoURL,
       token,
     };
   });
@@ -113,6 +115,15 @@ const emailFromStorage = () => {
   return token.email;
 };
 
+const photoFromStorage = () => {
+  const token = storageToken();
+  if (token === null) {
+    return null;
+  }
+
+  return token.photoURL;
+};
+
 export {
   isAuthenticated,
   idFromStorage,
@@ -122,4 +133,5 @@ export {
   removeTokenFromStorage,
   getTokenObject,
   tokenFromAuth,
+  photoFromStorage,
 };

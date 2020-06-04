@@ -39,6 +39,7 @@ export const login = creds => (dispatch) => {
   dispatch(requestLogin());
   return firebaseAuth.signInWithPopup(provider)
     .then((result) => {
+      console.log('firebase result', result);
       let tokenObject = {};
       return tokenFromAuth(result.user)
         .then((token) => {

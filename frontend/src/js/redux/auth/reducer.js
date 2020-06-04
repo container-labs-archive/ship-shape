@@ -11,6 +11,7 @@ import {
   idFromStorage,
   emailFromStorage,
   authTokenFromStorage,
+  photoFromStorage,
   TOKEN,
 } from './tokens';
 
@@ -23,6 +24,7 @@ const Auth = new Record({
   user: '',
   id: '',
   token: authTokenFromStorage(),
+  photoURL: photoFromStorage(),
 });
 
 export default function reducer(state = new Auth(), action) {
@@ -40,6 +42,7 @@ export default function reducer(state = new Auth(), action) {
       newState = newState.set('userId', payload.uid);
       newState = newState.set('userEmail', payload.email);
       newState = newState.set('token', payload.token);
+      newState = newState.set('photoURL', payload.photoURL);
       return newState;
     }
     case LOGIN_FAILURE: {

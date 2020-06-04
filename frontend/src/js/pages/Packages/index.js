@@ -29,7 +29,6 @@ import type { Props, State } from './types';
     isAuthenticated: state.auth.isAuthenticated,
   };
 })
-@authenticated
 @compose(
   graphql(packagesQuery, {
     // options: ({ userId }) => ({ variables: { key: userId } }),
@@ -45,6 +44,24 @@ import type { Props, State } from './types';
 @queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
+  // TODO: HOC
+  componentDidMount() {
+    this._checkAndRedirect();
+  }
+
+  componentDidUpdate() {
+    this._checkAndRedirect();
+  }
+
+  _checkAndRedirect() {
+    const { isAuthenticated, dispatch } = this.props;
+
+    if (!isAuthenticated) {
+      // redirect();
+      dispatch(push('/'));
+    }
+  }
+
   trackPackage = (json: any) => {
     const {
       data,

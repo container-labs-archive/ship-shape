@@ -30,16 +30,23 @@ import {
 })
 @withStyles(styles)
 class Home extends Component<Props, State> {
-  // componentDidUpdate(prevProps) {
-  //   const {
-  //     isAuthenticated,
-  //     dispatch,
-  //   } = this.props;
+  // TODO: HOC
+  componentDidMount() {
+    this._checkAndRedirect();
+  }
 
-  //   if (isAuthenticated) {
-  //     dispatch(push('/home'));
-  //   }
-  // }
+  componentDidUpdate() {
+    this._checkAndRedirect();
+  }
+
+  _checkAndRedirect() {
+    const { isAuthenticated, dispatch } = this.props;
+
+    if (isAuthenticated) {
+      // redirect();
+      dispatch(push('/home'));
+    }
+  }
 
   handleGoogleLogin = () => {
     const { dispatch } = this.props;
@@ -54,9 +61,9 @@ class Home extends Component<Props, State> {
       dispatch,
     } = this.props;
 
-    if (isAuthenticated) {
-      dispatch(push('/home'));
-    }
+    // if (isAuthenticated) {
+    //   dispatch(push('/home'));
+    // }
 
     return (
       <Card className={classes.container}>
