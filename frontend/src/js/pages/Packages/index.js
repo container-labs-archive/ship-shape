@@ -19,6 +19,7 @@ import { authenticated, queryLoader } from 'HOCS';
 import {
   packagesQuery,
   trackPackageMutation,
+  updatePackageMutation,
 } from './graphql';
 import styles from './styles';
 import type { Props, State } from './types';
@@ -37,14 +38,17 @@ import type { Props, State } from './types';
   graphql(trackPackageMutation, {
     name: 'trackPackage',
   }),
+  graphql(updatePackageMutation, {
+    name: 'updatePackage',
+  }),
 )
 @queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
-  trackPackage = (json) => {
+  trackPackage = (json: any) => {
     const {
-      trackPackage,
       data,
+      trackPackage,
     } = this.props;
 
     trackPackage({
@@ -53,6 +57,27 @@ class Home extends Component<Props, State> {
       },
     }).then(() => {
       data.refetch();
+    }).catch((error) => {
+      // dispatch a toast message or add an error to the form?
+      console.error(error);
+    });
+  }
+
+  onUpdate = (json: any) => {
+    const {
+      data,
+      updatePackage,
+    } = this.props;
+
+    updatePackage({
+      variables: {
+        input: json,
+      },
+    }).then(() => {
+      data.refetch();
+    }).catch((error) => {
+      // how to raise these in Raven as well?
+      console.error(error);
     });
   }
 
@@ -69,6 +94,7 @@ class Home extends Component<Props, State> {
         />
         <PackagesList
           data={data.packages}
+          onUpdate={this.onUpdate}
         />
       </div>
     );

@@ -1,29 +1,16 @@
 // @flow
 
 import * as packageResolvers from './packages';
-import * as userResolvers from './user';
 
 const resolvers = {
   Query: {
-    user: userResolvers.getUser,
-
     packages: packageResolvers.getPackages,
   },
 
   Mutation: {
-    createUser: userResolvers.createUser,
-    updateUser: userResolvers.updateUser,
-    deleteUser: userResolvers.deleteUser,
-    sendWelcome: userResolvers.sendWelcome,
-    confirmAccount: userResolvers.confirmAccount,
-
-
     trackPackage: packageResolvers.trackPackage,
+    updatePackage: packageResolvers.updatePackage,
   },
-
-  User: {
-  },
-
 };
 
 export default resolvers;

@@ -40,7 +40,9 @@ type Package {
   status: String
   # make a query for all "active" packages
   # not updated in the last ~1-2 hours
-  # lastUpdated: Timestamp
+  lastUpdated: Int
+  isActive: Boolean
+  isArchived: Boolean
 
   ship_engine: ShipEngineData
 }
@@ -50,9 +52,14 @@ input PackageCreateInput {
   tracking_code: String!
 }
 
+# TODO: isActive: false shows up in the UI
+#       isArchived: true will be skipped
 input PackageUpdateInput {
-  carrier: String!
-  tracking_code: String!
+  key: String!
+  # dont allow changes to carrier or tracking code
+  # carrier: String
+  # tracking_code: String
+  isArchived: Boolean
 }`;
 
 export default packageDefs;

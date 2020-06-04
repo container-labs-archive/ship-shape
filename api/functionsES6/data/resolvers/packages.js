@@ -10,7 +10,6 @@ import {
 import {
   admin,
 } from '../../firebase/index';
-import { sendWelcomeEmail } from '../../mailers/welcomeEmail';
 import Config from '../../config';
 import { PACKAGES_COLLECTION } from './collections';
 
@@ -39,7 +38,9 @@ const getPackages = async (parent, _params, { uid } : RequestContext) => {
     index: 'userId',
   }, uid);
 
-  return packages;
+  const data = packages.filter(pack => !pack.isArchived);
+
+  return data;
 };
 
 const trackPackage = async (parent: any, { input } : { input: PackageCreateInput }, { uid } : RequestContext) => {
@@ -73,6 +74,8 @@ const trackPackage = async (parent: any, { input } : { input: PackageCreateInput
   const record = {
     userId: uid,
     carrier,
+    isActive: true,
+    lastUpdated: Date.now(),
     tracking_code: trackingCode,
     ship_engine: data,
   };
@@ -91,11 +94,24 @@ const trackPackage = async (parent: any, { input } : { input: PackageCreateInput
     }));
 };
 
-const updatePackage = (parent, {}) => {
+const updatePackage = (parent: any, { input } : { input: PackageUpdateInput }, { uid } : RequestContext) => {
   // simply hits the shipengine api again
   // use object ID or pair of carrier and tracking code to get the object
   // if carrier and tracking code are used we don't need to query the db?
-}
+  const data = {
+    ...input,
+  };
+
+  // if we archive packages before they're done tracking, no need to track anymore!
+  if (data.isArchived) {
+    data.isActive = false;
+  }
+
+  return updateWrapper({
+    collection: PACKAGES_COLLECTION,
+    id: input.key,
+  }, data);
+};
 
 /**
  * Nested Object

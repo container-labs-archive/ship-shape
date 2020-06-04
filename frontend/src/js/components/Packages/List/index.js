@@ -48,6 +48,17 @@ class PackageList extends Component<Props, State> {
     });
   }
 
+  handleArchive = (rowKey) => {
+    const {
+      onUpdate,
+    } = this.props;
+
+    onUpdate({
+      key: rowKey,
+      isArchived: true,
+    });
+  }
+
   render() {
     const {
       title,
@@ -120,6 +131,7 @@ class PackageList extends Component<Props, State> {
               </Collapse>
               <CardActions>
                 <Button size="small" onClick={this.handleExpand}>Show More</Button>
+                <Button size="small" onClick={() => this.handleArchive(row.key)}>Archive</Button>
               </CardActions>
             </Card>
           )

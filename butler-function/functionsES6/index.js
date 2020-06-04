@@ -11,7 +11,7 @@ import axios from 'axios';
 import { firestore } from './firebase';
 import Config from './config';
 
-const throttle = require('promise-ratelimit')(1000);
+const throttle = require('promise-ratelimit')(2000);
 const functions = require('firebase-functions');
 
 
@@ -19,10 +19,6 @@ const COLLECTION = 'packages';
 const PUBSUB_TOPIC = 'butler';
 
 const butler = functions.pubsub.topic(PUBSUB_TOPIC).onPublish((message, context) => {
-  console.log('The function was triggered at ', context.timestamp);
-  console.log('The unique ID for the event is', context.eventId);
-
-  console.log(firestore);
   // query for all active trackings
   const ref = firestore.collection(COLLECTION);
 
@@ -38,15 +34,18 @@ const butler = functions.pubsub.topic(PUBSUB_TOPIC).onPublish((message, context)
     });
     return elements;
   }).then((elements) => {
-    const promises = [];
-
-    elements.forEach((element) => {
+    console.log('METRIC_num_packages ', elements.length);
+    // https://css-tricks.com/why-using-reduce-to-sequentially-resolve-promises-works/
+    return elements.reduce(async (previousPromise, element) => {
       const {
         carrier,
         tracking_code,
       } = element;
 
-      const request = axios.get('https://api.shipengine.com/v1/tracking', {
+      await previousPromise;
+
+      console.log('METRIC_ship_api_request');
+      const response = await axios.get('https://api.shipengine.com/v1/tracking', {
         headers: {
           'API-Key': Config.shipEngineAPIKey,
         },
@@ -54,54 +53,50 @@ const butler = functions.pubsub.topic(PUBSUB_TOPIC).onPublish((message, context)
           carrier_code: carrier,
           tracking_number: tracking_code,
         },
-      }).then((response) => {
-        const {
-          data,
-        } = response;
-        const {
-          status_code,
-        } = data;
-
-        const record = {
-          ...element,
-          lastUpdated: Date.now(),
-          ship_engine: {
-            ...data,
-          },
-        };
-
-        console.log('tracking code', status_code);
-        // stop checking for updates once it's delivered
-        if (status_code === 'DE') {
-          console.log('marking delivered package as no longer active');
-          record.isActive = false;
-        }
-
-
-        console.log('record', record);
-        const updateRef = firestore.collection(COLLECTION).doc(element.key);
-
-        // TODO: error checking
-        return updateRef.update(record);
       })
         .catch((error) => {
-          // handle error
           console.error(error);
+          console.error('METRIC_ship_api_request_error');
         })
         .finally(() => {
-          // always executed
-          console.log('done');
-        })
-        .then(() => {
-          return throttle();
+          console.log('METRIC_ship_api_request_finally');
         });
 
-      // write to firestore
-      promises.push(request);
-    });
+
+      const {
+        data,
+      } = response;
+      const {
+        status_code,
+      } = data;
+
+      const record = {
+        ...element,
+        lastUpdated: Date.now(),
+        ship_engine: {
+          ...data,
+        },
+      };
+
+      console.log('tracking code', status_code);
+      // stop checking for updates once it's delivered
+      if (status_code === 'DE') {
+        console.log('marking delivered package as no longer active');
+        record.isActive = false;
+      }
+
+
+      // console.log('record', record);
+      const updateRef = firestore.collection(COLLECTION).doc(element.key);
+
+      // TODO: error checking
+      await updateRef.update(record);
+
+      return throttle();
+    }, Promise.resolve());
 
     // https://css-tricks.com/why-using-reduce-to-sequentially-resolve-promises-works/
-    return Promise.all(promises);
+    // return Promise.all(promises);
   });
 });
 

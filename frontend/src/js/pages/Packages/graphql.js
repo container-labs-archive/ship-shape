@@ -32,7 +32,16 @@ const trackPackageMutation = gql`
   }
 `;
 
+const updatePackageMutation = gql`
+  mutation updatePackage($input: PackageUpdateInput) {
+    updatePackage(input: $input) {
+      status
+    }
+  }
+`;
+
 export {
   packagesQuery,
   trackPackageMutation,
+  updatePackageMutation,
 };
