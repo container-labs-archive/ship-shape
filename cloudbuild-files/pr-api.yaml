@@ -6,6 +6,6 @@ steps:
 
 - name: 'gcr.io/$PROJECT_ID/api'
   id: TestFunctions
-  args: ['cd', 'api', '&&', 'yarn', 'install']
+  args: ['./test-api.sh', '$_FOLDER', '$_ENVIRONMENT']
   waitFor:
   - BuildFunctions
