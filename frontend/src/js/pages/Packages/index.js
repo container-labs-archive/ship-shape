@@ -45,6 +45,7 @@ import type { Props, State } from './types';
 @withStyles(styles)
 class Home extends Component<Props, State> {
   // TODO: HOC
+  // https://www.codementor.io/@sahilmittal/using-higher-order-components-for-authenticated-routing-i1hcp6pc6
   componentDidMount() {
     this._checkAndRedirect();
   }

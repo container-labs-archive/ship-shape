@@ -1,17 +1,11 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-
-
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-// import blue from '@material-ui/core/colors/blue';
-import { queryLoader } from 'HOCS';
-// import Config from 'Config';
 import AppBarAndDrawer from 'Components/Layout/AppBarAndDrawer';
 import Notifier from 'Components/Layout/Notifier';
 import type { AppProps, AppState } from 'Types';
 import createRoutes from '../../routes';
-import { saveUserSettings } from '../../redux/users/actions';
 
 
 const mapStateToProps = (state) => {
