@@ -19,4 +19,3 @@ const newApp = functions.https.onRequest((request, response) => {
 });
 
 exports.graphql = newApp;
-exports.graphqlAlpha = newApp;

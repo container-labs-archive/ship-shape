@@ -1,0 +1,11 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: BuildFunctions
+  args: ['build', '-f', 'Dockerfile', '--tag=gcr.io/$PROJECT_ID/frontend', '.']
+
+- name: 'gcr.io/$PROJECT_ID/frontend'
+  id: TestFunctions
+  args: ['./test.sh', '$_FOLDER', '$_ENVIRONMENT']
+  waitFor:
+  - BuildFunctions

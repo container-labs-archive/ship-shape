@@ -1,0 +1,19 @@
+
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: BuildFunctions
+  args: ['build', '-f', 'Dockerfile', '--tag=gcr.io/$PROJECT_ID/butler', '.']
+
+# TODO:
+# - name: 'gcr.io/$PROJECT_ID/libra-api-$_ENVIRONMENT'
+#   id: TestFunctions
+#   args: ['./test.sh', '$_FOLDER']
+
+- name: 'gcr.io/$PROJECT_ID/butler'
+  id: DeployApi
+  args: ['./deploy-api-firebase.sh', '$_FOLDER', '$_ENVIRONMENT', '$_FIRE_TOKEN', 'libra', '$_PROJECT', '$_FUNCTION_NAME']
+  waitFor:
+  - BuildFunctions
+
+images: ['gcr.io/$PROJECT_ID/butler']

@@ -17,7 +17,9 @@
     "package-functions-alpha": "funpack -e alpha",
     "build-staging": "funpack -e staging && cd functions && yarn install",
     "build-alpha": "funpack -e staging && cd functions",
-    "fix": "eslint --fix functionsES6/*"
+    "fix": "eslint --fix functionsES6/*",
+    "predeploy-staging": "funpack -e staging",
+    "deploy-staging": "firebase deploy --project gpt-staging --only functions:graphql"
   },
   "node": "10",
   "engines": {
