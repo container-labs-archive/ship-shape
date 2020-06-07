@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
     photoURL: state.auth.photoURL,
     isAuthenticated: state.auth.isAuthenticated,
     token: state.auth.token,
-    darkTheme: state.users.settings.user.darkTheme,
   };
 };
 
@@ -30,7 +29,6 @@ class App extends React.Component<AppProps, AppState> {
       isAuthenticated,
       dispatch,
       token,
-      darkTheme,
     } = this.props;
 
     const theme = {
@@ -62,6 +60,8 @@ class App extends React.Component<AppProps, AppState> {
         },
       },
     }
+
+    const darkTheme = false;
 
     if (darkTheme) {
       theme.palette.type = 'dark';
