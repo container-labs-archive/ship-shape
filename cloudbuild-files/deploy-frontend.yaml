@@ -2,9 +2,9 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   id: BuildFunctions
-  args: ['build', '-f', 'Dockerfile', '--tag=gcr.io/$PROJECT_ID/libra-$_FOLDER-$_ENVIRONMENT', '.']
+  args: ['build', '-f', 'Dockerfile', '--tag=gcr.io/$PROJECT_ID/frontend', '.']
 
-- name: 'gcr.io/$PROJECT_ID/libra-$_FOLDER-$_ENVIRONMENT'
+- name: 'gcr.io/$PROJECT_ID/frontend'
   id: DeployFrontend
   args: ['./deploy-firebase.sh', '$_FOLDER', '$_ENVIRONMENT', '$_FIRE_TOKEN']
   waitFor:
