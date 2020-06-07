@@ -2,65 +2,49 @@
 
 const baseConfig = {
   production: {
-    firebaseStorageBucket: 'gpt-production.appspot.com',
-    firebaseDatabaseURL: 'https://gpt-production.firebaseio.com',
-    graphqlEndpoint: 'http://localhost:5000/graphql',
-    passwordResetUrl: 'https://localhost:4000/#/reset',
-    confirmEmailUrl: 'https://localhost:4000/#/confirm',
     ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
-    frontendPath: 'http://localhost:4000',
   },
   staging: {
-    firebaseStorageBucket: 'gpt-staging.appspot.com',
-    firebaseDatabaseURL: 'https://gpt-staging.firebaseio.com',
     ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
   },
   local: {
-    firebaseStorageBucket: 'gpt-staging.appspot.com',
-    firebaseDatabaseURL: 'https://gpt-staging.firebaseio.com',
     graphqlEndpoint: 'http://localhost:5000/graphql',
-    passwordResetUrl: 'https://localhost:4000/#/reset',
-    confirmEmailUrl: 'https://localhost:4000/#/confirm',
     ravenFrontendPublicDSN: 'https://cfc623514ecc4bafa09d0cae35c9fe29@o99542.ingest.sentry.io/5259734',
-    frontendPath: 'http://localhost:4000',
   },
 };
 
 const extendedConfig = {
   production: {
     firebaseConfig: {
-      apiKey: 'AIzaSyAeZg33RCJUa1VCqJdi2RP8dSEw-MFaAgk',
-      authDomain: 'gpt-production.firebaseapp.com',
-      databaseURL: 'https://gpt-production.firebaseio.com',
-      projectId: 'gpt-production',
-      storageBucket: 'gpt-production.appspot.com',
-      messagingSenderId: '1079941883748',
-      appId: '1:1079941883748:web:95a8e6191e77140c6f7c71',
-      measurementId: 'G-VTB7EHZ637'
+      apiKey: 'AIzaSyBgQ3QJFu7pDf2GBrT8UTHimo5NCCnVaBM',
+      authDomain: 'ship-shape-prod-f272.firebaseapp.com',
+      databaseURL: 'https://ship-shape-prod-f272.firebaseio.com',
+      projectId: 'ship-shape-prod-f272',
+      storageBucket: 'ship-shape-prod-f272.appspot.com',
+      messagingSenderId: '802511686274',
+      appId: '1:802511686274:web:d3018625bfe9d8df28c29b'
     },
   },
   staging: {
     firebaseConfig: {
-      apiKey: 'AIzaSyDH7zNIogyj8G81Ew5GlGrkZvnIxbB-kcs',
-      authDomain: 'gpt-staging.firebaseapp.com',
-      databaseURL: 'https://gpt-staging.firebaseio.com',
-      projectId: 'gpt-staging',
-      storageBucket: 'gpt-staging.appspot.com',
-      messagingSenderId: '736177410254',
-      appId: '1:736177410254:web:c1b1085d3a878c1064c09f',
-      measurementId: 'G-H4DP540LH0',
+      apiKey: 'AIzaSyAIkjMIxfEcGBoFiBJ1XNJhNXGr95OOtlg',
+      authDomain: 'ship-shape-staging-2-17ca.firebaseapp.com',
+      databaseURL: 'https://ship-shape-staging-2-17ca.firebaseio.com',
+      projectId: 'ship-shape-staging-2-17ca',
+      storageBucket: 'ship-shape-staging-2-17ca.appspot.com',
+      messagingSenderId: '596464260347',
+      appId: '1:596464260347:web:5e46e5345917618a5e0c5e'
     },
   },
   local: {
     firebaseConfig: {
-      apiKey: 'AIzaSyDH7zNIogyj8G81Ew5GlGrkZvnIxbB-kcs',
-      authDomain: 'gpt-staging.firebaseapp.com',
-      databaseURL: 'https://gpt-staging.firebaseio.com',
-      projectId: 'gpt-staging',
-      storageBucket: 'gpt-staging.appspot.com',
-      messagingSenderId: '736177410254',
-      appId: '1:736177410254:web:c1b1085d3a878c1064c09f',
-      measurementId: 'G-H4DP540LH0',
+      apiKey: 'AIzaSyAIkjMIxfEcGBoFiBJ1XNJhNXGr95OOtlg',
+      authDomain: 'ship-shape-staging-2-17ca.firebaseapp.com',
+      databaseURL: 'https://ship-shape-staging-2-17ca.firebaseio.com',
+      projectId: 'ship-shape-staging-2-17ca',
+      storageBucket: 'ship-shape-staging-2-17ca.appspot.com',
+      messagingSenderId: '596464260347',
+      appId: '1:596464260347:web:5e46e5345917618a5e0c5e'
     },
   },
 };
