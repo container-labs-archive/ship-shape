@@ -10,7 +10,7 @@
     "flow": "flow",
     "pretest": "funpack -e local",
     "test": "jest functions/*",
-    "package-functions-production": "funpack -e production",
+    "package-functions-prod": "funpack -e production",
     "package-functions-staging": "funpack -e staging",
     "package-functions-local": "funpack -e local",
     "package-functions-alpha": "funpack -e alpha",
