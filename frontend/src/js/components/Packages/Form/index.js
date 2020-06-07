@@ -173,6 +173,8 @@ class Form extends Component<Props, State> {
       submitting,
       handleSubmit,
       dispatch,
+      requestError,
+      isSubmitting
     } = this.props;
     const { requesting, carrier, trackingCode } = this.state;
 
@@ -183,7 +185,9 @@ class Form extends Component<Props, State> {
             onChange={this.handleChange}
             label="Carrier"
             value={carrier}
+            disabled={requesting || isSubmitting}
             displayEmpty
+            error={requestError}
           >
             <MenuItem value="">
               <em>Select Carrier</em>
@@ -205,15 +209,18 @@ class Form extends Component<Props, State> {
             label="Tracking Code"
             autoComplete="current-password"
             variant="outlined"
+            disabled={requesting || isSubmitting}
             value={trackingCode}
             onChange={this.handleCodeChange}
+            error={requestError != null}
+            helperText={requestError}
           />
         </div>
-        <div className={classes.buttons} key="f3">
+        <div className={classes.buttons} key="f4">
           <Button
             color="primary"
             variant="contained"
-            disabled={requesting || submitting}
+            disabled={requesting || isSubmitting}
             onClick={this.presubmit}
             id="submitJob"
           >

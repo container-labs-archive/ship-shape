@@ -18,6 +18,7 @@ const packagesQuery = gql`
           country_code
           state_province
           postal_code
+          city_locality
         }
       }
     }

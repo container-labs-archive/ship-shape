@@ -44,6 +44,11 @@ import type { Props, State } from './types';
 @queryLoader
 @withStyles(styles)
 class Home extends Component<Props, State> {
+  state = {
+    error: null,
+    submitting: false,
+  }
+
   // TODO: HOC
   // https://www.codementor.io/@sahilmittal/using-higher-order-components-for-authenticated-routing-i1hcp6pc6
   componentDidMount() {
@@ -69,6 +74,11 @@ class Home extends Component<Props, State> {
       trackPackage,
     } = this.props;
 
+    this.setState({
+      submitting: true,
+      error: null,
+    });
+
     trackPackage({
       variables: {
         input: json,
@@ -77,7 +87,14 @@ class Home extends Component<Props, State> {
       data.refetch();
     }).catch((error) => {
       // dispatch a toast message or add an error to the form?
-      console.error(error);
+      // console.error(error);
+      this.setState({
+        error,
+      });
+    }).finally(() => {
+      this.setState({
+        submitting: false,
+      });
     });
   }
 
@@ -87,6 +104,12 @@ class Home extends Component<Props, State> {
       updatePackage,
     } = this.props;
 
+
+    this.setState({
+      submitting: true,
+      error: null,
+    });
+
     updatePackage({
       variables: {
         input: json,
@@ -95,7 +118,14 @@ class Home extends Component<Props, State> {
       data.refetch();
     }).catch((error) => {
       // how to raise these in Raven as well?
-      console.error(error);
+      // console.error(error);
+      this.setState({
+        error,
+      });
+    }).finally(() => {
+      this.setState({
+        submitting: false,
+      });
     });
   }
 
@@ -104,10 +134,22 @@ class Home extends Component<Props, State> {
       classes,
       data,
     } = this.props;
+    const {
+      error,
+      submitting,
+    } = this.state;
+
+    let errorMessage = null;
+    if (error) {
+      // TODO: handle ship shape errors
+      errorMessage = 'There was a problem with the request';
+    }
 
     return (
       <div>
         <PackagesForm
+          requestError={errorMessage}
+          isSubmitting={submitting}
           onSubmit={this.trackPackage}
         />
         <PackagesList

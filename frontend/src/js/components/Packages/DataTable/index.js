@@ -30,13 +30,8 @@ const columnData = [
     sortable: true,
   },
   {
-    id: 'state_province',
-    label: 'State',
-    sortable: true,
-  },
-  {
-    id: 'postal_code',
-    label: 'Postal Code',
+    id: 'city_locality',
+    label: 'City',
     sortable: true,
   },
   {
@@ -120,8 +115,7 @@ class JobsDataTable extends Component<Props, State> {
             <TableRow hover key={dt.key} jest={`row-${dt.jobTitle}`}>
               <TableCell>{moment(dt.occurred_at).format('MM/DD/YY HH:MM')}</TableCell>
               <TableCell>{dt.country_code}</TableCell>
-              <TableCell>{dt.state_province}</TableCell>
-              <TableCell>{dt.postal_code}</TableCell>
+              <TableCell>{dt.city_locality}, {dt.state_province}</TableCell>
               <TableCell>{dt.description}</TableCell>
             </TableRow>
           ))}

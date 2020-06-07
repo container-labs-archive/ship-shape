@@ -68,7 +68,7 @@ module.exports = {
       },
     }),
     new HtmlWebpackPlugin({
-      favicon: './dist/favicon.png',
+      favicon: './dist/favicon-ship.png',
       filename: '../index.html',
     }),
     // new StyleLintPlugin(),
