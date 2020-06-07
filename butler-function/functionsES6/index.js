@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 // only add when they actually load...
 // require('@google-cloud/trace-agent').start();
 // require('@google-cloud/profiler').start();
@@ -18,7 +20,7 @@ const functions = require('firebase-functions');
 const COLLECTION = 'packages';
 const PUBSUB_TOPIC = 'butler';
 
-const butler = functions.pubsub.topic(PUBSUB_TOPIC).onPublish((message, context) => {
+const butler = functions.pubsub.topic(PUBSUB_TOPIC).onPublish(() => {
   // query for all active trackings
   const ref = firestore.collection(COLLECTION);
 

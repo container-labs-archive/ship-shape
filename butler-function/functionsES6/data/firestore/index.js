@@ -1,9 +1,7 @@
 // @flow
 import { firestore } from '../../firebase';
 import type {
-  DocumentReference,
   QuerySnapshot,
-  WriteResult,
 } from '../../../flow-typed/npm/firebase_v5.x.x';
 
 type PathObject = {
@@ -22,12 +20,10 @@ async function singleWrapper(pathObject: PathObject) {
   const ref = firestore.collection(collection).doc(id);
 
   // TODO: error checking
-  return ref.get().then((doc) => {
-    return {
-      // key: doc.id,
-      ...doc.data(),
-    };
-  });
+  return ref.get().then((doc) => ({
+    // key: doc.id,
+    ...doc.data(),
+  }));
 }
 
 async function indexQuery(pathObject: PathObject, value: string) {
@@ -122,20 +118,16 @@ async function createWrapper(pathObject: PathObject, data: Object) {
   // such as userId for the user-settings collection
   if (id) {
     ref = firestore.collection(collection).doc(id);
-    return ref.set({ ...data, key: id }).then((doc) => {
-      return {
-        key: id,
-      };
-    });
+    return ref.set({ ...data, key: id }).then(() => ({
+      key: id,
+    }));
   }
 
   const docRef = firestore.collection(collection).doc();
 
-  return docRef.set({ ...data, key: docRef.id }).then(() => {
-    return {
-      key: docRef.id,
-    };
-  });
+  return docRef.set({ ...data, key: docRef.id }).then(() => ({
+    key: docRef.id,
+  }));
 }
 
 async function updateWrapper(pathObject: PathObject, data: Object) {
@@ -149,15 +141,11 @@ async function updateWrapper(pathObject: PathObject, data: Object) {
   const ref = firestore.collection(collection).doc(id);
 
 
-
   // TODO: error checking
   // TODO: merge in status field as middleware?
-  return ref.update(data).then((doc: WriteResult) => {
-    // console.log(doc);
-    return {
-      key: id,
-    };
-  });
+  return ref.update(data).then(() => ({
+    key: id,
+  }));
 }
 
 async function deleteWrapper(pathObject: PathObject) {

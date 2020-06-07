@@ -26,7 +26,7 @@ if (env === 'staging' || env === 'alpha' || env === 'production') {
 
 FireClass.instance(admin);
 
-const settings = {/* your settings... */  };
+const settings = {/* your settings... */ };
 firestore.settings(settings);
 
 const {

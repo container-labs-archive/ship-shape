@@ -1,15 +1,10 @@
 // @flow
 import axios from 'axios';
 import {
-  singleWrapper,
-  listWrapper,
   createWrapper,
   updateWrapper,
   indexQuery,
 } from '../firestore';
-import {
-  admin,
-} from '../../firebase/index';
 import Config from '../../config';
 import { PACKAGES_COLLECTION } from './collections';
 
@@ -18,11 +13,12 @@ type RequestContext = {
 }
 
 // wish we could get flowtypes from graphql schemas
-type Package = {
-  carrier: String
+type PackageCreateInput = {
+  carrier: string,
+  tracking_code: string,
 }
 
-type PackageCreateInput = {
+type PackageUpdateInput = {
   carrier: string,
   tracking_code: string,
 }
@@ -38,7 +34,7 @@ const getPackages = async (parent, _params, { uid } : RequestContext) => {
     index: 'userId',
   }, uid);
 
-  const data = packages.filter(pack => !pack.isArchived);
+  const data = packages.filter((pack) => !pack.isArchived);
 
   return data;
 };
@@ -87,14 +83,14 @@ const trackPackage = async (parent: any, { input } : { input: PackageCreateInput
       status: 200,
       message: 'tracking started',
     }))
-    .catch(error => ({
+    .catch((error) => ({
       status: 500,
       message: error,
       error,
     }));
 };
 
-const updatePackage = (parent: any, { input } : { input: PackageUpdateInput }, { uid } : RequestContext) => {
+const updatePackage = (parent: any, { input } : { input: PackageUpdateInput }) => {
   // simply hits the shipengine api again
   // use object ID or pair of carrier and tracking code to get the object
   // if carrier and tracking code are used we don't need to query the db?
