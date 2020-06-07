@@ -1,7 +1,4 @@
 
-
-
-
 ## Firebase
 
 https://www.airpair.com/firebase/posts/structuring-your-firebase-data
