@@ -1,18 +1,14 @@
 {
   "targets": {
-    "gpt-staging": {
-      "hosting": {
-        "staging-frontend": [
-          "gpt-staging"
-        ]
-      }
-    },
-    "gpt-production": {
+    "ship-shape-staging-2-17ca": {
       "hosting": {
         "production-frontend": [
-          "gpt-production"
+          "ship-shape-staging-2"
         ]
       }
     }
+  },
+  "projects": {
+    "default": "ship-shape-staging-2-17ca"
   }
 }

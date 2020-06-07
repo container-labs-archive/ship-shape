@@ -6,6 +6,6 @@ steps:
 
 - name: 'gcr.io/$PROJECT_ID/butler'
   id: TestFunctions
-  args: ['./test.sh', '$_FOLDER', '$_ENVIRONMENT']
+  args: ['./test-function.sh', '$_FOLDER', '$_ENVIRONMENT']
   waitFor:
   - BuildFunctions

@@ -2,4 +2,4 @@ FROM containerlabs/node-ci:latest
 
 COPY ./ .
 
-CMD ["./deploy-firebase.sh"]
+CMD ["./deploy-hosting.sh"]

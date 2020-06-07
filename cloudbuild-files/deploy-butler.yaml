@@ -11,8 +11,8 @@ steps:
 #   args: ['./test.sh', '$_FOLDER']
 
 - name: 'gcr.io/$PROJECT_ID/butler'
-  id: DeployApi
-  args: ['./deploy-api-firebase.sh', '$_FOLDER', '$_ENVIRONMENT', '$_FIRE_TOKEN', 'libra', '$_PROJECT', '$_FUNCTION_NAME']
+  id: DeployFunction
+  args: ['./deploy-function.sh', '$_FOLDER', '$_ENVIRONMENT', '$_FIRE_TOKEN', '$_PROJECT', '$_FUNCTION_NAME']
   waitFor:
   - BuildFunctions
 

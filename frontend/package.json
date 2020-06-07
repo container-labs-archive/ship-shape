@@ -164,19 +164,21 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline  --config webpack.config.js",
     "sandbox": "webpack-dev-server --inline  --config webpack.config.sandbox.js",
-    "build-production": "npm run clean && NODE_ENV='production' webpack --config webpack.config.production.js",
+    "build-production": "yarn run clean && NODE_ENV='production' webpack --config webpack.config.production.js",
     "test": "NODE_ENV='test' mocha --compilers js:babel-register",
     "start": "node server.js",
     "package-functions-staging": "yarn run build-staging",
     "package-functions-prod": "yarn run build-prod",
-    "build-staging": "yar run clean && webpack --config webpack.config.staging.js",
+    "build-staging": "yarn run clean && webpack --config webpack.config.staging.js",
     "prebuild-local": "rimraf dist/*.js && rimraf dist/*.map && rimraf dist/index.html",
     "build-local": "NODE_ENV='local' webpack --config webpack.config.local.js",
-    "deploy-production": "npm run build-production && firebase deploy --only hosting:production-frontend --project gpt-production",
-    "deploy-staging": "npm run build-staging && firebase deploy --only hosting:staging-frontend --project=gpt-staging",
+
+    "deploy-prod": "yarn run build-production && firebase deploy --only hosting:production-frontend --project gpt-production",
+    "deploy-staging": "yarn run build-staging && firebase deploy --only hosting:staging-frontend --project=gpt-staging",
+
     "clean": "rimraf dist/profileEvents.json && rimraf dist/*.LICENSE && rimraf dist/*.js && rimraf dist/*.br && rimraf dist/*.map && rimraf dist/index.html",
-    "build-alpha": "npm run clean && webpack --config webpack.config.alpha.js",
-    "deploy-alpha": "npm run build-alpha && firebase deploy --only hosting:alpha-frontend --project=libra-production"
+    "build-alpha": "yarn run clean && webpack --config webpack.config.alpha.js",
+    "deploy-alpha": "yarn run build-alpha && firebase deploy --only hosting:alpha-frontend --project=libra-production"
   },
   "author": "Will Beebe",
   "license": "ISC",
