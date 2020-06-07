@@ -1,7 +1,6 @@
 // @flow
 import { firestore } from '../../firebase';
 import type {
-  DocumentReference,
   QuerySnapshot,
   WriteResult,
 } from '../../../flow-typed/npm/firebase_v5.x.x';
@@ -76,9 +75,6 @@ async function multiIndexQuery(pathObject: PathObject) {
     }
   }
 
-  // console.log('query', query);
-
-
   return query.get().then((doc) => {
     const elements = [];
     doc.docs.forEach((element) => {
@@ -148,11 +144,9 @@ async function updateWrapper(pathObject: PathObject, data: Object) {
 
   const ref = firestore.collection(collection).doc(id);
 
-
-
   // TODO: error checking
   // TODO: merge in status field as middleware?
-  return ref.update(data).then((doc: WriteResult) => {
+  return ref.update(data).then(() => {
     // console.log(doc);
     return {
       key: id,

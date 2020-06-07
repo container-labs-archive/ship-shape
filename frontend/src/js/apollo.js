@@ -73,7 +73,6 @@ const errorLink = onError((args) => {
 const authMiddleware = new ApolloLink((operation, forward) => {
   Logger.log('authMiddleware', operation, forward);
   const token = authTokenFromStorage();
-  console.log('auth middleware', token);
 
   if (token !== null) {
     operation.setContext({
