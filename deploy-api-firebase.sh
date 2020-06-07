@@ -6,7 +6,7 @@ set -ex
 #firebase-deploy $1 $2
 
 export FIREBASE_TOKEN=$3
-echo "token is $FIREBASE_TOKEN"
+#echo "token is $FIREBASE_TOKEN"
 
 cd $1
 yarn install
