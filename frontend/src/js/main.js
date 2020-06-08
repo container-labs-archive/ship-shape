@@ -1,4 +1,4 @@
-import "core-js/stable";
+import 'core-js/stable';
 // import "core-js/modules/es6.promise";
 // import "core-js/modules/es6.array.iterator";
 import 'regenerator-runtime/runtime';
@@ -10,14 +10,16 @@ import Config from 'Config';
 import AppWrapper from './AppWrapper';
 
 const sentryDSN = Config.ravenFrontendPublicDSN;
-const useSentry = process.env.NODE_BUILD_ENV === 'production' || process.env.NODE_BUILD_ENV === 'alpha' || process.env.NODE_BUILD_ENV === 'staging';
+const useSentry = process.env.NODE_BUILD_ENV === 'production'
+  || process.env.NODE_BUILD_ENV === 'alpha'
+  || process.env.NODE_BUILD_ENV === 'staging';
 const sentryConfig = {
   dsn: sentryDSN,
   release: process.env.RELEASE,
   environment: process.env.NODE_BUILD_ENV,
 };
 
-if (useSentry || true) {
+if (useSentry) {
   Sentry.init({
     ...sentryConfig,
   });

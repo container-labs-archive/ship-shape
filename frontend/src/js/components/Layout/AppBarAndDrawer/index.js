@@ -9,12 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
 import JobsIcon from '@material-ui/icons/FormatListBulleted';
-import ResultsIcon from '@material-ui/icons/Save';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {
   AppBar,
-  Button,
-  Chip,
   Divider,
   Drawer,
   IconButton,
@@ -28,9 +25,7 @@ import {
   Tooltip,
   Typography,
 } from '@material-ui/core';
-import Logo from '../../../../assets/logo.svg';
 import Avatar from '../../Avatar';
-import DashboardDropdown from '../DashboardDropdown';
 import type {
   AppBarAndDrawerProps,
   AppBarAndDrawerState,
@@ -87,10 +82,6 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
       classes,
       isAuthenticated,
       email,
-      userIsAuthenticated,
-      user,
-      disabled,
-      account,
       disableDrawer,
       photoURL,
     } = this.props;
@@ -241,7 +232,6 @@ class AppBarAndDrawer extends React.Component<AppBarAndDrawerProps, AppBarAndDra
     const {
       classes,
       children,
-      disabled,
       disableDrawer,
     } = this.props;
 

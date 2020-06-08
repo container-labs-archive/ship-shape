@@ -1,9 +1,10 @@
 // @flow
-import { push } from 'connected-react-router';
-import { firebaseAuth } from '../firebase/firebase';
+import {
+  firebaseAuth,
+  provider,
+} from '../firebase/firebase';
 import {
   LOGIN_REQUEST,
-  LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
@@ -11,31 +12,26 @@ import {
   LOGIN_SUCCESS_FULFILLED,
 } from './constants';
 import {
-  getTokenObject,
   removeTokenFromStorage,
   TOKEN,
   tokenFromAuth,
 } from './tokens';
-import { provider } from '../firebase/firebase';
 
 const requestLogin = () => ({
   type: LOGIN_REQUEST,
 });
 
-export const loginSuccess = (tokenObject: Object) =>
-  {
-    return {
-      type: LOGIN_SUCCESS_FULFILLED,
-      payload: tokenObject,
-    };
-  };
+export const loginSuccess = (tokenObject: Object) => ({
+  type: LOGIN_SUCCESS_FULFILLED,
+  payload: tokenObject,
+});
 
-export const loginError = error => ({
+export const loginError = (error: Object) => ({
   type: LOGIN_FAILURE,
   payload: error,
 });
 
-export const login = creds => (dispatch) => {
+export const login = () => (dispatch: Function) => {
   dispatch(requestLogin());
   return firebaseAuth.signInWithPopup(provider)
     .then((result) => {
@@ -79,4 +75,3 @@ export const logout = () => (dispatch: Function) => {
     .then(() => dispatch(logoutSuccess()))
     .catch(error => dispatch(logoutFailure(error)));
 };
-

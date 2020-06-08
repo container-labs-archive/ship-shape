@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import styles from './styles';
 import type { Props } from './types';
 
-const FourOhFour = ({ classes }: Props): ReactComponent => (
+const FourOhFour = ({ classes }: Props) => (
   <div className={classes.container}>
     <Typography variant="h4" className={classes.typography}>
       404

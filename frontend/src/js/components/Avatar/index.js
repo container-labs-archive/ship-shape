@@ -13,6 +13,8 @@ import {
 type Props = {
   photoURL: string,
   email: string,
+  classes: any,
+  asChip: Boolean,
 }
 
 const styles = theme => ({

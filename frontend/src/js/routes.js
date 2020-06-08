@@ -10,16 +10,6 @@ const Home = Loadable({
 const Packages = Loadable({
   loader: () => import(/* webpackChunckName: "home" */ './pages/Packages'),
 });
-const Settings = Loadable({
-  loader: () => import(/* webpackChunckName: "settings" */ './pages/Settings'),
-});
-const ConfirmAccount = Loadable({
-  loader: () => import('./pages/ConfirmAccount'),
-});
-const ResetPassword = Loadable({
-  loader: () => import('./pages/ResetPassword'),
-});
-// import ResetPassword from './pages/ResetPassword';
 const FourOhFour = Loadable({
   loader: () => import('./pages/FourOhFour'),
 });
@@ -28,8 +18,6 @@ const createRoutes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
     <Route exact path="/home" component={Packages} />
-    <Route path="/confirm" component={ConfirmAccount} />
-    <Route path="/reset" component={ResetPassword} />
     <Route component={FourOhFour} />
   </Switch>
 );

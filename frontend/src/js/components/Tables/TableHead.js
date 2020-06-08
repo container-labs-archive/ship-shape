@@ -15,18 +15,18 @@ type Props = {
 }
 
 class EnhancedTableHead extends Component<Props> {
-  createSortHandler = property => (event) => {
+  createSortHandler = (property: any) => (event: any) => {
     const {
       onRequestSort,
     } = this.props;
     onRequestSort(event, property);
   }
 
-  renderCellContent = (column) => {
+  renderCellContent = (column: any) => {
     const { order, orderBy } = this.props;
     const { id, label } = column;
 
-    if (false) { // sortable doesnt work for new material ui
+    if (false || !column) { // sortable doesnt work for new material ui
       return (
         <Tooltip
           title="Sort"

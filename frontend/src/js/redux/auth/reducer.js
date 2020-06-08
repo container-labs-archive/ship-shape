@@ -30,7 +30,7 @@ const Auth = new Record({
 export default function reducer(state = new Auth(), action) {
   switch (action.type) {
     case LOGIN_REQUEST: {
-      let newState = state.set('isFetching', true);
+      const newState = state.set('isFetching', true);
       return newState;
     }
     case LOGIN_SUCCESS_FULFILLED: {

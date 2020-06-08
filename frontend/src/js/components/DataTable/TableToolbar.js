@@ -13,10 +13,10 @@ import { lighten } from '@material-ui/core/styles/colorManipulator';
 import { FilterList as FilterListIcon } from '@material-ui/icons';
 
 type Props = {
-  classes: Object,
+  classes: ?Object,
   title: string,
   onAdd: Function,
-  filter: boolean,
+  filter: ?boolean,
 }
 
 const styles = theme => ({

@@ -3,19 +3,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import {
-  Button,
-  Card,
-  CardContent,
-  CardActions,
-  CardHeader,
-} from '@material-ui/core';
 import { push } from 'connected-react-router';
-import PackagesForm from 'Components/Packages/Form'
+import PackagesForm from 'Components/Packages/Form';
 import PackagesList from 'Components/Packages/List';
 import { compose, graphql } from 'Apollo';
-import { authenticated, queryLoader } from 'HOCS';
+import { queryLoader } from 'HOCS';
 import {
   packagesQuery,
   trackPackageMutation,
@@ -24,16 +16,11 @@ import {
 import styles from './styles';
 import type { Props, State } from './types';
 
-@connect((state) => {
-  return {
-    isAuthenticated: state.auth.isAuthenticated,
-  };
-})
+@connect(state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+}))
 @compose(
-  graphql(packagesQuery, {
-    // options: ({ userId }) => ({ variables: { key: userId } }),
-    // skip: ownProps => !ownProps.userId,
-  }),
+  graphql(packagesQuery),
   graphql(trackPackageMutation, {
     name: 'trackPackage',
   }),
@@ -52,14 +39,14 @@ class Home extends Component<Props, State> {
   // TODO: HOC
   // https://www.codementor.io/@sahilmittal/using-higher-order-components-for-authenticated-routing-i1hcp6pc6
   componentDidMount() {
-    this._checkAndRedirect();
+    this.checkAndRedirect();
   }
 
   componentDidUpdate() {
-    this._checkAndRedirect();
+    this.checkAndRedirect();
   }
 
-  _checkAndRedirect() {
+  checkAndRedirect = () => {
     const { isAuthenticated, dispatch } = this.props;
 
     if (!isAuthenticated) {
@@ -131,7 +118,6 @@ class Home extends Component<Props, State> {
 
   render() {
     const {
-      classes,
       data,
     } = this.props;
     const {

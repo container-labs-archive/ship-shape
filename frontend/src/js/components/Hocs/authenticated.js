@@ -1,13 +1,15 @@
+// @flow
+
 import React from 'react';
-import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 
+type Props = {
+  isAuthenticated: boolean,
+  dispatch: Function,
+}
 
-// @connect(store => ({
-//   isAuthenticated: store.auth.isAuthenticated,
-// }))
-function authenticated(WrappedComponent) {
-  return class HOCLoader extends React.Component {
+function authenticated(WrappedComponent: any) {
+  return class HOCLoader extends React.Component<Props> {
     componentWillMount() {
       this.redirectIfNotAuthenticated();
     }

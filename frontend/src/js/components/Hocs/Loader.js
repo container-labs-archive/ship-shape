@@ -17,9 +17,13 @@ type Props = {
   classes: Object,
 }
 
+type PrevProps = {
+  error: ?Object,
+}
+
 @withStyles(styles)
 class Loader extends React.PureComponent<Props> {
-  getSnapshotBeforeUpdate(prevProps, prevState) {
+  getSnapshotBeforeUpdate(prevProps: PrevProps) {
     const { error } = prevProps;
 
     if (error) {

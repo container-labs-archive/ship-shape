@@ -1,4 +1,3 @@
-import grey from '@material-ui/core/colors/grey';
 import purple from '@material-ui/core/colors/purple';
 
 const drawerWidth = 200;

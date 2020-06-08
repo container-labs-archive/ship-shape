@@ -35,87 +35,44 @@ const columnData = [
 @withStyles(styles)
 class PackagesDataTable extends Component<Props, State> {
   state = {
-    page: 0,
-    order: null,
-    orderBy: null,
-    rowsPerPage: 25,
     data: {},
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: Props) {
     return {
       data: props.data,
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({ data: nextProps.data });
-  // }
-
-  handleRequestSort = (event, property) => {
-    const orderBy = property;
-    let order = 'desc';
-
-    if (this.state.orderBy === property && this.state.order === 'desc') {
-      order = 'asc';
-    }
-
-    const data = order === 'desc'
-      ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-      : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
-
-    this.setState({ data, order, orderBy });
-  };
-
-  handleChangePage = (event, page) => {
-    this.setState({ page });
-  };
-
-  handleChangeRowsPerPage = (event) => {
-    this.setState({ rowsPerPage: event.target.value });
-  };
-
   render() {
     const {
       title,
-      onAdd,
-      classes,
-      addButton,
-      isUnmatched,
-      onAppeals,
-      onMarkDone,
-      loading,
     } = this.props;
 
     const {
-      data, page, order, orderBy, rowsPerPage,
+      data,
     } = this.state;
-
-    // 2020-05-30T10:09:59Z
 
     return (
       <DataTable
         data={data}
         columnData={columnData}
-        onRequestSort={this.handleRequestSort}
         emptyMessage="No events yet for this package."
-        page={page}
         title={title}
       >
-        {data && data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((dt) => (
-            <TableRow hover key={dt.key} jest={`row-${dt.jobTitle}`}>
-              <TableCell>{moment(dt.occurred_at).format('MM/DD/YY HH:MM')}</TableCell>
-              <TableCell>{dt.country_code}</TableCell>
-              <TableCell>
-                {dt.city_locality}
+        {data.map(dt => (
+          <TableRow hover key={dt.key} jest={`row-${dt.jobTitle}`}>
+            <TableCell>{moment(dt.occurred_at).format('MM/DD/YY HH:MM')}</TableCell>
+            <TableCell>{dt.country_code}</TableCell>
+            <TableCell>
+              {dt.city_locality}
 ,
-                {' '}
-                {dt.state_province}
-              </TableCell>
-              <TableCell>{dt.description}</TableCell>
-            </TableRow>
-          ))}
+              {' '}
+              {dt.state_province}
+            </TableCell>
+            <TableCell>{dt.description}</TableCell>
+          </TableRow>
+        ))}
       </DataTable>
     );
   }

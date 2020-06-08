@@ -3,7 +3,7 @@
 import L from 'react-loadable';
 import Loader from './Loader';
 
-const Loadable = opts => L({
+const Loadable = (opts: any) => L({
   loading: Loader,
   ...opts,
 });

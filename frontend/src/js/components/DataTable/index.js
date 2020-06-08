@@ -21,6 +21,17 @@ type Props = {
   title: string,
   onAdd: Function,
   data: Object,
+  loading: boolean,
+  columnData: Array<Object>,
+  order: any,
+  orderBy: any,
+  onRequestSort: any,
+  emptyMessage: any,
+  children: any,
+  onChangePage: any,
+  onChangeRowsPerPage: any,
+  page: any,
+  rowsPerPage: any,
 }
 
 @withStyles(styles)

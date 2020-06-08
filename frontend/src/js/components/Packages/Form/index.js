@@ -171,10 +171,10 @@ class Form extends Component<Props, State> {
               <em>Select Carrier</em>
             </MenuItem>
 
-            {carriers.map((carrier) => {
-              const rowKey = `c-${carrier.code}`;
+            {carriers.map((car) => {
+              const rowKey = `c-${car.code}`;
               return (
-                <MenuItem value={carrier.code} key={rowKey}>{carrier.name}</MenuItem>
+                <MenuItem value={car.code} key={rowKey}>{car.name}</MenuItem>
               );
             })}
           </Select>

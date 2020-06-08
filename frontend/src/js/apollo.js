@@ -50,7 +50,7 @@ const errorLink = onError((args) => {
     graphQLErrors.forEach(({ message, locations, path }) => {
       if (process.env.NODE_ENV === 'staging') {
         console.error(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
-      } else if (process.env.NODE_ENV === 'production' ) {
+      } else if (process.env.NODE_ENV === 'production') {
         // Raven.captureException(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
       }
     });

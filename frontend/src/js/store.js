@@ -5,22 +5,21 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise-middleware';
 import RavenMiddleware from 'redux-raven-middleware';
-// import createHistory from 'history/createBrowserHistory';
-
-const history = require("history").createBrowserHistory();
 
 import { apolloErrorToaster } from 'Middleware';
 import reducers from './reducers';
 import { Auth } from './redux/auth/reducer';
+// import createHistory from 'history/createBrowserHistory';
+
+const history = require('history').createBrowserHistory();
 
 function loadState() {
   return {
-    "auth": new Auth(),
-  }
+    auth: new Auth(),
+  };
 }
 
 const persistedState = loadState();
-
 
 
 const isProduction = process.env.NODE_ENV === 'production';

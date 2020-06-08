@@ -1,34 +1,32 @@
 // @flow
 
-
-// import * as React from 'react';
-import React, { Component } from 'react';
+import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { setConfig } from 'react-hot-loader';
+
+import { Provider } from 'react-redux';
+import { Route } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
+import { ConnectedRouter } from 'connected-react-router';
+// import { detect } from 'detect-browser';
+import App from './pages/App/index.js';
+// import UnsupportedBrowser from './pages/UnsupportedBrowser';
+import apolloClient from './apollo';
+import store, { history } from './store';
+
 setConfig({
   // logLevel: 'debug',
   ignoreSFC: true, // RHL will be __completely__ disabled for SFC
   pureRender: true, // RHL will not change render method
 });
 
-import { Provider } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { ApolloProvider } from 'react-apollo';
-import { ConnectedRouter } from 'connected-react-router';
-import { detect } from 'detect-browser';
-import 'Assets/style.css';
-import App from './pages/App/index.js';
-// import UnsupportedBrowser from './pages/UnsupportedBrowser';
-import apolloClient from './apollo';
-import store, { history } from './store';
-
-class AppWrapper extends Component {
+class AppWrapper extends React.Component {
   render() {
-    const browser = detect();
-    const {
-      name,
-      things,
-    } = browser;
+    // const browser = detect();
+    // const {
+    //   name,
+    //   things,
+    // } = browser;
 
     // TODO: turn unsupportedBackOn
     // let appComponent;

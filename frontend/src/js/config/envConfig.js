@@ -22,7 +22,7 @@ const extendedConfig = {
       projectId: 'ship-shape-prod-f272',
       storageBucket: 'ship-shape-prod-f272.appspot.com',
       messagingSenderId: '802511686274',
-      appId: '1:802511686274:web:d3018625bfe9d8df28c29b'
+      appId: '1:802511686274:web:d3018625bfe9d8df28c29b',
     },
   },
   staging: {
@@ -33,7 +33,7 @@ const extendedConfig = {
       projectId: 'ship-shape-staging-2-17ca',
       storageBucket: 'ship-shape-staging-2-17ca.appspot.com',
       messagingSenderId: '596464260347',
-      appId: '1:596464260347:web:5e46e5345917618a5e0c5e'
+      appId: '1:596464260347:web:5e46e5345917618a5e0c5e',
     },
   },
   local: {
@@ -44,7 +44,7 @@ const extendedConfig = {
       projectId: 'ship-shape-staging-2-17ca',
       storageBucket: 'ship-shape-staging-2-17ca.appspot.com',
       messagingSenderId: '596464260347',
-      appId: '1:596464260347:web:5e46e5345917618a5e0c5e'
+      appId: '1:596464260347:web:5e46e5345917618a5e0c5e',
     },
   },
 };

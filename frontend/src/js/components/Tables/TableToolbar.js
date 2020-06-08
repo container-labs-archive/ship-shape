@@ -11,11 +11,11 @@ import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
 type Props = {
-  classes: Object,
+  classes: ?Object,
   addButton: boolean,
   title: string,
-  onAdd: Function,
-  filter: boolean,
+  onAdd: ?Function,
+  filter: ?boolean,
 }
 
 const styles = theme => ({

@@ -11,6 +11,8 @@ type AppBarAndDrawerProps = {
   children: Object,
   disabled: boolean,
   user: Object,
+  disableDrawer: boolean,
+  photoURL: string,
 }
 
 type AppBarAndDrawerState = {

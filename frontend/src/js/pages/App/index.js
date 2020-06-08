@@ -1,4 +1,7 @@
 // @flow
+
+/* eslint-disable import/extensions */
+
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -7,16 +10,13 @@ import Notifier from 'Components/Layout/Notifier';
 import type { AppProps, AppState } from 'Types';
 import createRoutes from '../../routes';
 
-
-const mapStateToProps = (state) => {
-  return {
-    userId: state.auth.userId,
-    userEmail: state.auth.userEmail,
-    photoURL: state.auth.photoURL,
-    isAuthenticated: state.auth.isAuthenticated,
-    token: state.auth.token,
-  };
-};
+const mapStateToProps = state => ({
+  userId: state.auth.userId,
+  userEmail: state.auth.userEmail,
+  photoURL: state.auth.photoURL,
+  isAuthenticated: state.auth.isAuthenticated,
+  token: state.auth.token,
+});
 
 // TODO: add authenticated HOC
 
@@ -59,7 +59,7 @@ class App extends React.Component<AppProps, AppState> {
           main: '#1e88e5',
         },
       },
-    }
+    };
 
     const darkTheme = false;
 

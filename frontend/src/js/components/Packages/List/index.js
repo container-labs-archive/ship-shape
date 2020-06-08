@@ -1,5 +1,7 @@
 // @flow
 
+/* eslint-disable camelcase */
+
 import React, { Component } from 'react';
 import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
@@ -31,10 +33,6 @@ class PackageList extends Component<Props, State> {
   state = {
     expanded: false,
   }
-
-  // const handleExpandClick = () => {
-  //   setExpanded(!expanded);
-  // };
 
   handleExpand = () => {
     const {

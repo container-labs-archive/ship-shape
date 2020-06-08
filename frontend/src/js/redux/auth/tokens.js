@@ -10,27 +10,21 @@ const TOKEN = `ship_it_token_${process.env.NODE_BUILD_ENV}`;
  * see how old it is
  * if it's old, refresh
  */
-const getTokenObject = (user: Object) =>
-  user.getIdToken(true).then(token =>
-    JSON.stringify({
-      uid: user.uid,
-      email: user.email,
-      timestamp: new Date().getTime(),
-      photoURL: user.photoURL,
-      token,
-    }));
+const getTokenObject = (user: Object) => user.getIdToken(true).then(token => JSON.stringify({
+  uid: user.uid,
+  email: user.email,
+  timestamp: new Date().getTime(),
+  photoURL: user.photoURL,
+  token,
+}));
 
-const tokenFromAuth = (user: Object) => {
-  return user.getIdToken(true).then(token => {
-    return {
-      uid: user.uid,
-      email: user.email,
-      timestamp: new Date().getTime(),
-      photoURL: user.photoURL,
-      token,
-    };
-  });
-};
+const tokenFromAuth = (user: Object) => user.getIdToken(true).then(token => ({
+  uid: user.uid,
+  email: user.email,
+  timestamp: new Date().getTime(),
+  photoURL: user.photoURL,
+  token,
+}));
 
 const refreshToken = () => {
   const user = firebaseAuth.currentUser;
@@ -52,7 +46,7 @@ const storageToken = () => {
     token = JSON.parse(tokenObject);
     refreshToken();
   } catch (e) {
-    const tokenObject = localStorage.getItem(TOKEN);
+    token = localStorage.getItem(TOKEN);
   }
   return token;
 };
@@ -104,7 +98,7 @@ const authTokenFromStorage = () => {
 
 const removeTokenFromStorage = () => {
   localStorage.setItem(TOKEN, null);
-}
+};
 
 const emailFromStorage = () => {
   const token = storageToken();
