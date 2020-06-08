@@ -12,6 +12,7 @@ const packagesQuery = gql`
         status_code
         status_description
         estimated_delivery_date
+        carrier_status_code
 
         events {
           description

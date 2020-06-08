@@ -70,11 +70,18 @@ class PackageList extends Component<Props, State> {
           const {
             ship_engine: {
               estimated_delivery_date,
+              carrier_status_code,
               events,
             },
           } = row;
 
           const rowKey = `pk-${row.key}`;
+          let deliveryStatus = 'No Information';
+          if (carrier_status_code === 'D') {
+            deliveryStatus = 'Fucking delivered, do you even go outside?';
+          } else if (estimated_delivery_date) {
+            deliveryStatus = moment(estimated_delivery_date).format('MM/DD/YY');
+          }
 
           return (
             <Card className={classes.root} key={rowKey}>
@@ -107,8 +114,7 @@ class PackageList extends Component<Props, State> {
                     Estimated Delivery Date
                     </Typography>
                     <Typography variant="body2" component="p">
-                      {estimated_delivery_date && moment(estimated_delivery_date).format('MM/DD/YY')}
-                      {!estimated_delivery_date && 'No Information'}
+                      {deliveryStatus}
                     </Typography>
                   </Grid>
                 </Grid>
