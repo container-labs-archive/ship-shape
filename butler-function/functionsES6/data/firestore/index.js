@@ -72,9 +72,6 @@ async function multiIndexQuery(pathObject: PathObject) {
     }
   }
 
-  // console.log('query', query);
-
-
   return query.get().then((doc) => {
     const elements = [];
     doc.docs.forEach((element) => {

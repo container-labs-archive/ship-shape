@@ -11,6 +11,7 @@ import { ConnectedRouter } from 'connected-react-router';
 // import { detect } from 'detect-browser';
 import App from './pages/App/index.js';
 // import UnsupportedBrowser from './pages/UnsupportedBrowser';
+import 'Assets/style.css';
 import apolloClient from './apollo';
 import store, { history } from './store';
 

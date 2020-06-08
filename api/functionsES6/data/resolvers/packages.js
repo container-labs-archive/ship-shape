@@ -42,6 +42,7 @@ const getPackages = async (parent, _params, { uid } : RequestContext) => {
 const trackPackage = async (parent: any, { input } : { input: PackageCreateInput }, { uid } : RequestContext) => {
   const {
     carrier,
+    name,
     tracking_code: trackingCode,
   } = input;
 
@@ -70,6 +71,7 @@ const trackPackage = async (parent: any, { input } : { input: PackageCreateInput
   const record = {
     userId: uid,
     carrier,
+    name,
     isActive: true,
     lastUpdated: Date.now(),
     tracking_code: trackingCode,

@@ -3,10 +3,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import { TextField } from 'Components/redux-form-material-ui';
+// import { TextField } from 'Components/redux-form-material-ui';
 import {
   reduxForm, getFormValues, change,
 } from 'redux-form';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -154,7 +155,7 @@ class Form extends Component<Props, State> {
       requestError,
       isSubmitting,
     } = this.props;
-    const { requesting, carrier, trackingCode } = this.state;
+    const { requesting, name, carrier, trackingCode } = this.state;
 
     return (
       <form onSubmit={handleSubmit(this.presubmit)}>
