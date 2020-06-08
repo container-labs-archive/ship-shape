@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import TableRow from '@material-ui/core/TableRow';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -18,12 +16,15 @@ type Props = {
 
 class EnhancedTableHead extends Component<Props> {
   createSortHandler = property => (event) => {
-    this.props.onRequestSort(event, property);
+    const {
+      onRequestSort,
+    } = this.props;
+    onRequestSort(event, property);
   }
 
   renderCellContent = (column) => {
     const { order, orderBy } = this.props;
-    const { id, label, sortable } = column;
+    const { id, label } = column;
 
     if (false) { // sortable doesnt work for new material ui
       return (

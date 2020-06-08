@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { TextField } from 'Components/redux-form-material-ui';
 import {
-  Field, reduxForm, getFormValues, change,
+  reduxForm, getFormValues, change,
 } from 'redux-form';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -129,7 +129,7 @@ class Form extends Component<Props, State> {
 
   // hack w/ carrier state to make the select dropdown easier to work with
   // ideally this is integrated into the react redux form
-  presubmit = (data) => {
+  presubmit = () => {
     const {
       onSubmit,
     } = this.props;
@@ -150,10 +150,7 @@ class Form extends Component<Props, State> {
   render() {
     const {
       classes,
-      onSubmit,
-      submitting,
       handleSubmit,
-      dispatch,
       requestError,
       isSubmitting,
     } = this.props;

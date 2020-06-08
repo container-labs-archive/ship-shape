@@ -3,11 +3,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import {
   Button,
   Collapse,
@@ -64,18 +59,7 @@ class PackageList extends Component<Props, State> {
 
   render() {
     const {
-      title,
-      onAdd,
-      onEdit,
-      onDelete,
-      onAssign,
-      onSchedule,
       classes,
-      addButton,
-      isUnmatched,
-      onAppeals,
-      onMarkDone,
-      loading,
       data,
     } = this.props;
     const {

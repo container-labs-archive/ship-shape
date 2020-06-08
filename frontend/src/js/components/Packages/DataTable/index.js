@@ -5,17 +5,8 @@ import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CancelIcon from '@material-ui/icons/Cancel';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
-
 import styles from './styles';
 import DataTable from '../../DataTable';
-
 import type { Props, State } from './types';
 
 const columnData = [
@@ -42,7 +33,7 @@ const columnData = [
 
 ];
 @withStyles(styles)
-class JobsDataTable extends Component<Props, State> {
+class PackagesDataTable extends Component<Props, State> {
   state = {
     page: 0,
     order: null,
@@ -112,7 +103,7 @@ class JobsDataTable extends Component<Props, State> {
         title={title}
       >
         {data && data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((dt, index) => (
+          .map((dt) => (
             <TableRow hover key={dt.key} jest={`row-${dt.jobTitle}`}>
               <TableCell>{moment(dt.occurred_at).format('MM/DD/YY HH:MM')}</TableCell>
               <TableCell>{dt.country_code}</TableCell>
@@ -130,4 +121,4 @@ class JobsDataTable extends Component<Props, State> {
   }
 }
 
-export default JobsDataTable;
+export default PackagesDataTable;
