@@ -7,7 +7,9 @@ import {
 
 const renderSelectField = ({
   children,
-  input: { onChange, value, onBlur, ...inputProps },
+  input: {
+    onChange, value, onBlur, ...inputProps
+  },
   onChange: onChangeFromField,
   defaultValue,
 }) => (
@@ -28,4 +30,4 @@ const renderSelectField = ({
 
 export {
   renderSelectField,
-}
+};

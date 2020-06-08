@@ -17,7 +17,7 @@ const styles = theme => ({
   },
   carrierLogo: {
     maxWidth: '100px',
-  }
+  },
 });
 
 export default styles;

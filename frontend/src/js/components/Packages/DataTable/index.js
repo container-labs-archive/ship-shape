@@ -69,10 +69,9 @@ class JobsDataTable extends Component<Props, State> {
       order = 'asc';
     }
 
-    const data =
-      order === 'desc'
-        ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+    const data = order === 'desc'
+      ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
+      : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
 
     this.setState({ data, order, orderBy });
   };
@@ -97,7 +96,9 @@ class JobsDataTable extends Component<Props, State> {
       loading,
     } = this.props;
 
-    const { data, page, order, orderBy, rowsPerPage } = this.state;
+    const {
+      data, page, order, orderBy, rowsPerPage,
+    } = this.state;
 
     // 2020-05-30T10:09:59Z
 
@@ -115,7 +116,12 @@ class JobsDataTable extends Component<Props, State> {
             <TableRow hover key={dt.key} jest={`row-${dt.jobTitle}`}>
               <TableCell>{moment(dt.occurred_at).format('MM/DD/YY HH:MM')}</TableCell>
               <TableCell>{dt.country_code}</TableCell>
-              <TableCell>{dt.city_locality}, {dt.state_province}</TableCell>
+              <TableCell>
+                {dt.city_locality}
+,
+                {' '}
+                {dt.state_province}
+              </TableCell>
               <TableCell>{dt.description}</TableCell>
             </TableRow>
           ))}

@@ -16,8 +16,7 @@ type PageableState = {
  * purposefully abstract, can be used for anything waiting for data
  * not responsible for loading data
  */
-const pageResults = (WrappedComponent: any) =>
-  class HOCWaitingOnData extends React.Component<Props, PageableState> {
+const pageResults = (WrappedComponent: any) => class HOCWaitingOnData extends React.Component<Props, PageableState> {
     state = {
       page: 0,
       pageSize: 25,
@@ -58,7 +57,7 @@ const pageResults = (WrappedComponent: any) =>
         <WrappedComponent {...this.props} {...newProps} />
       );
     }
-  };
+};
 
 export default pageResults;
 

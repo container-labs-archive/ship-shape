@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { TextField } from 'Components/redux-form-material-ui';
-import { Field, reduxForm, getFormValues, change } from 'redux-form';
+import {
+  Field, reduxForm, getFormValues, change,
+} from 'redux-form';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -153,7 +155,7 @@ class Form extends Component<Props, State> {
       handleSubmit,
       dispatch,
       requestError,
-      isSubmitting
+      isSubmitting,
     } = this.props;
     const { requesting, carrier, trackingCode } = this.state;
 
@@ -176,7 +178,7 @@ class Form extends Component<Props, State> {
               const rowKey = `c-${carrier.code}`;
               return (
                 <MenuItem value={carrier.code} key={rowKey}>{carrier.name}</MenuItem>
-              )
+              );
             })}
           </Select>
 
@@ -221,7 +223,7 @@ class Form extends Component<Props, State> {
 }
 
 const form = 'packages';
-const fields = ['carrier', 'tracking_code',];
+const fields = ['carrier', 'tracking_code'];
 const initialValues = {
   carrier: '', tracking_code: '', name: '',
 };

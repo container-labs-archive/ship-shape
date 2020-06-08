@@ -20,15 +20,19 @@ class AsyncButton extends React.Component {
 
     return (
       <React.Fragment>
-        {waiting &&
-          <Button variant="contained" color="secondary" className={classes.button} type={type} >
+        {waiting
+          && (
+          <Button variant="contained" color="secondary" className={classes.button} type={type}>
             <CircularProgress size={20} />
           </Button>
+          )
         }
-        {!waiting &&
-          <Button variant="contained" color="secondary" className={classes.button} onClick={onClick} type={type} >
+        {!waiting
+          && (
+          <Button variant="contained" color="secondary" className={classes.button} onClick={onClick} type={type}>
             {label}
           </Button>
+          )
         }
       </React.Fragment>
     );

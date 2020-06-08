@@ -54,7 +54,8 @@ const TableToolbar = ({
     </div>
     <div className={classes.actions}>
       {
-        addButton &&
+        addButton
+        && (
         <Button
           variant="contained"
           color="primary"
@@ -63,14 +64,17 @@ const TableToolbar = ({
         >
           Add New
         </Button>
+        )
       }
       {
-        filter &&
+        filter
+        && (
         <Tooltip title="Filter">
           <IconButton>
             <FilterListIcon />
           </IconButton>
         </Tooltip>
+        )
       }
     </div>
   </Toolbar>

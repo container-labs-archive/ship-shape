@@ -15,7 +15,7 @@ type Props = {
   email: string,
 }
 
-const styles = (theme) => ({
+const styles = theme => ({
   chip: {
     display: 'inline',
     marginRight: theme.spacing(2),

@@ -121,10 +121,9 @@ class UsersDataTable extends React.Component<Props, State> {
       order = 'asc';
     }
 
-    const data =
-      order === 'desc'
-        ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+    const data = order === 'desc'
+      ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
+      : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
 
     this.setState({ data, order, orderBy });
   };

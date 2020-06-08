@@ -11,7 +11,7 @@ const styles = theme => ({
   disabled: {
     color: theme.palette.grey[400],
   },
-})
+});
 
 @withStyles(styles)
 class SelenityType extends React.Component {

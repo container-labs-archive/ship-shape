@@ -41,7 +41,7 @@ class FactorTable extends React.PureComponent<Props> {
       profile,
       panelMatch,
       accountId,
-      { isHybrid: panelMatch.isHybrid, isEvaluation: panelMatch.isEvaluation }
+      { isHybrid: panelMatch.isHybrid, isEvaluation: panelMatch.isEvaluation },
     );
 
     return (

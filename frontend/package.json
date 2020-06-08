@@ -169,6 +169,7 @@
     "build-prod": "yarn run clean && NODE_ENV='production' webpack --config webpack.config.production.js",
     "test": "NODE_ENV='test' mocha --compilers js:babel-register",
     "start": "node server.js",
+    "lint": "eslint src/js/Components/*",
     "build-staging": "yarn run clean && webpack --config webpack.config.staging.js",
     "prebuild-local": "rimraf dist/*.js && rimraf dist/*.map && rimraf dist/index.html",
     "build-local": "NODE_ENV='local' webpack --config webpack.config.local.js",

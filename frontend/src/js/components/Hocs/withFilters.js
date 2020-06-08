@@ -14,8 +14,7 @@ type FilterState = {
   withFilters: ?[Filter],
 }
 
-const withFilters = (WrappedComponent: any) =>
-  class HOCWaitingOnData extends React.Component<Props, FilterState> {
+const withFilters = (WrappedComponent: any) => class HOCWaitingOnData extends React.Component<Props, FilterState> {
     state = {
       withFilters: [],
     }
@@ -34,7 +33,7 @@ const withFilters = (WrappedComponent: any) =>
         <WrappedComponent {...this.props} {...newProps} />
       );
     }
-  };
+};
 
 export default withFilters;
 export type { FilterState };
