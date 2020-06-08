@@ -8,9 +8,6 @@ import { Field, reduxForm, getFormValues, change } from 'redux-form';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import {
-  InputLabel,
-} from '@material-ui/core';
 import styles from './styles';
 import type { Props, State } from './types';
 
@@ -87,24 +84,7 @@ const carriers = [
     name: 'UPS',
     code: 'ups',
   },
-]
-
-// const renderSelectField = ({
-//   input,
-//   label,
-//   meta: { touched, error },
-//   children,
-//   ...custom
-// }) => (
-//   <SelectField
-//     label={label}
-//     errorText={touched && error}
-//     {...input}
-//     onChange={(event, index, value) => input.onChange(value)}
-//     children={children}
-//     {...custom}
-//   />
-// )
+];
 
 const mapStateToProps = state => ({
   values: getFormValues('packages')(state),
@@ -125,6 +105,7 @@ class Form extends Component<Props, State> {
   state = {
     requesting: false,
     carrier: '',
+    name: 'Fucking pants',
     trackingCode: '',
   }
 
@@ -136,16 +117,12 @@ class Form extends Component<Props, State> {
     this.setState({ requesting: false });
   }
 
-  handleChange = (ev) => {
-    this.setState({
-      carrier: ev.target.value,
-    });
-  }
-
-  handleCodeChange = (ev) => {
-    this.setState({
-      trackingCode: ev.target.value,
-    });
+  handleChange = (ev, key) => {
+    const state = {
+      ...this.state,
+    };
+    state[key] = ev.target.value;
+    this.setState(state);
   }
 
   // hack w/ carrier state to make the select dropdown easier to work with
@@ -155,10 +132,12 @@ class Form extends Component<Props, State> {
       onSubmit,
     } = this.props;
     const {
+      name,
       carrier,
       trackingCode,
     } = this.state;
     const merged = {
+      name,
       carrier,
       tracking_code: trackingCode,
     };
@@ -182,7 +161,7 @@ class Form extends Component<Props, State> {
       <form onSubmit={handleSubmit(this.presubmit)}>
         <div key="f1">
           <Select
-            onChange={this.handleChange}
+            onChange={e => this.handleChange(e, 'carrier')}
             label="Carrier"
             value={carrier}
             disabled={requesting || isSubmitting}
@@ -194,7 +173,7 @@ class Form extends Component<Props, State> {
             </MenuItem>
 
             {carriers.map((carrier) => {
-              const rowKey = `c-${carrier.code}`
+              const rowKey = `c-${carrier.code}`;
               return (
                 <MenuItem value={carrier.code} key={rowKey}>{carrier.name}</MenuItem>
               )
@@ -205,18 +184,27 @@ class Form extends Component<Props, State> {
         <br />
         <div key="f2">
           <TextField
-            id="outlined-password-input"
             label="Tracking Code"
-            autoComplete="current-password"
             variant="outlined"
             disabled={requesting || isSubmitting}
             value={trackingCode}
-            onChange={this.handleCodeChange}
+            onChange={e => this.handleChange(e, 'trackingCode')}
             error={requestError != null}
             helperText={requestError}
           />
         </div>
-        <div className={classes.buttons} key="f4">
+        <div key="f4">
+          <TextField
+            label="What is it?"
+            variant="outlined"
+            disabled={requesting || isSubmitting}
+            value={name}
+            onChange={e => this.handleChange(e, 'name')}
+            error={requestError != null}
+            helperText={requestError}
+          />
+        </div>
+        <div className={classes.buttons} key="f5">
           <Button
             color="primary"
             variant="contained"
@@ -235,7 +223,7 @@ class Form extends Component<Props, State> {
 const form = 'packages';
 const fields = ['carrier', 'tracking_code',];
 const initialValues = {
-  carrier: '', tracking_code: '',
+  carrier: '', tracking_code: '', name: '',
 };
 const validate = (values) => {
   const errors = {};

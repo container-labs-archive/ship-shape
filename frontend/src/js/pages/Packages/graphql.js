@@ -5,6 +5,7 @@ const packagesQuery = gql`
     packages {
       key
       carrier
+      name
       tracking_code
 
       ship_engine {

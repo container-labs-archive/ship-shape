@@ -99,9 +99,17 @@ class PackageList extends Component<Props, State> {
               <CardContent>
 
               <Grid container spacing={3}>
-                <Grid item xs={12}>
+                <Grid item xs={6}>
                   <Typography className={classes.pos} color="textSecondary">
                     <img src={carrierLogos[row.carrier]} alt={row.carrier} className={classes.carrierLogo} />
+                  </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                <Typography variant="h6" component="h2">
+                    Name
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                    {row.name}
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>

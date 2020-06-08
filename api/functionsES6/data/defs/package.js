@@ -35,6 +35,7 @@ type Package {
   # we write this to every package record to query on later
   # userId: String!
   carrier: String
+  name: String
   tracking_code: String
 
   status: String
@@ -49,6 +50,7 @@ type Package {
 
 input PackageCreateInput {
   carrier: String!
+  name: String
   tracking_code: String!
 }
 
@@ -59,6 +61,7 @@ input PackageUpdateInput {
   # dont allow changes to carrier or tracking code
   # carrier: String
   # tracking_code: String
+  name: String
   isArchived: Boolean
 }`;
 
