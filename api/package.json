@@ -30,7 +30,7 @@
   "dependencies": {
     "@babel/runtime": "7.2.0",
     "@containerlabs/react-apollo-shared": "^2.4.0",
-    "@google-cloud/firestore": "^3.4.1",
+    "@google-cloud/firestore": "^4.2.0",
     "@google-cloud/profiler": "^1.0.1",
     "@google-cloud/trace-agent": "^5.1.0",
     "@sendgrid/mail": "^6.3.1",
