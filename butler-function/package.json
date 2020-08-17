@@ -48,7 +48,7 @@
     "react-router": "^5.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.2.0",
+    "@babel/cli": "7.10.5",
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "7.10.4",
     "@babel/plugin-proposal-decorators": "7.2.0",
