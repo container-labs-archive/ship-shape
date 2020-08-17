@@ -44,7 +44,7 @@
     "jspdf": "1.5.3",
     "jspdf-autotable": "^3.0.13",
     "jspdf-customfonts": "^0.0.4-rc.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "lodash.flowright": "3.5.0",
     "moment": "^2.22.2",
     "query-string": "^6.2.0",
