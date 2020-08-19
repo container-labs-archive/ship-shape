@@ -33,7 +33,7 @@
     "create-object-url": "1.0.2",
     "date-fns": "2.0.0-alpha.7",
     "decode-uri-component": "^0.2.0",
-    "detect-browser": "^4.8.0",
+    "detect-browser": "^5.1.1",
     "filesize": "^3.6.1",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.9.2",
