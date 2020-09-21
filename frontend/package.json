@@ -111,7 +111,7 @@
     "@babel/preset-env": "^7.8.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.10.4",
-    "@babel/register": "^7.8.0",
+    "@babel/register": "^7.11.5",
     "@babel/runtime": "^7.8.0",
     "@hot-loader/react-dom": "^16.11.0",
     "@sentry/webpack-plugin": "^1.10.0",
