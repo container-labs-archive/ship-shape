@@ -46,7 +46,7 @@
     "firebase-tools": "^7.12.1",
     "global": "^4.4.0",
     "graphql": "^14.4.1",
-    "graphql-playground-middleware-express": "^1.7.15",
+    "graphql-playground-middleware-express": "^1.7.21",
     "graphql-tools": "^6.0.5",
     "helmet": "^3.22.0",
     "http-errors": "1.7.1",
