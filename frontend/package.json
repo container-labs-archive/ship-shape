@@ -67,7 +67,7 @@
     "redux-promise-middleware": "^6.0.1",
     "redux-raven-middleware": "^1.2.0",
     "redux-thunk": "2.3.0",
-    "regenerator-runtime": "^0.13.3",
+    "regenerator-runtime": "^0.13.7",
     "seamless-immutable": "^7.1.4",
     "unfetch": "^4.1.0",
     "uuid": "^3.3.2",
