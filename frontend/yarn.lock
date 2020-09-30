@@ -8552,10 +8552,10 @@ react-apollo@^3.1.3:
     "@apollo/react-hooks" "^3.1.3"
     "@apollo/react-ssr" "^3.1.3"
 
-react-avatar-editor@^11.0.4:
-  version "11.0.6"
-  resolved "https://registry.yarnpkg.com/react-avatar-editor/-/react-avatar-editor-11.0.6.tgz#c6194397bf9d27ab35c9741959fce1313c2f2c52"
-  integrity sha512-RI0+22g9qVsjHcslhwrwp3rn2A++53tFiq0NsdhOzdsQ/CcBQWWafpw3wd658G+Euj6kuxQX5j+Adp2l9adLOw==
+react-avatar-editor@^11.0.10:
+  version "11.0.10"
+  resolved "https://registry.yarnpkg.com/react-avatar-editor/-/react-avatar-editor-11.0.10.tgz#27fe5de6465a2471d6507626535266b7b444f68c"
+  integrity sha512-Rd5aFuzjsF6cuQUsTXbvd16DVBDUPKNqW6thR+Wmxz7SzQbXI1TvphEC9kZkInnAbZaPwXwo9bpUnDW4jpjf8A==
   dependencies:
     prop-types "^15.5.8"
 
