@@ -28,7 +28,7 @@
     "node": "10"
   },
   "dependencies": {
-    "@babel/runtime": "7.2.0",
+    "@babel/runtime": "7.11.2",
     "@containerlabs/react-apollo-shared": "^2.4.0",
     "@google-cloud/firestore": "^4.2.0",
     "@google-cloud/profiler": "^1.0.1",
