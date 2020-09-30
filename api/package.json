@@ -89,7 +89,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "flow-bin": "^0.87.0",
-    "jest": "^23.6.0"
+    "jest": "^26.4.2"
   },
   "sideEffects": false,
   "private": true
