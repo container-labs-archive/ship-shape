@@ -76,7 +76,7 @@
     "@babel/preset-flow": "^7.10.4",
     "@containerlabs/funpack": "^1.0.0",
     "@firebase/app-types": "0.6.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-add-module-exports": "1.0.4",
     "babel-plugin-transform-imports": "^1.5.1",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
