@@ -1,7 +1,7 @@
 // @flow
 
 import admin from 'firebase-admin';
-import FireClass from '@containerlabs/react-apollo-shared';
+import FireClass from '@containerlabs/shared-nodejs-function';
 import Firestore from '@google-cloud/firestore';
 
 import Config from '../config';

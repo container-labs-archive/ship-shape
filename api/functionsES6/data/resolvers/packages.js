@@ -4,7 +4,8 @@ import {
   createWrapper,
   updateWrapper,
   indexQuery,
-} from '../firestore';
+} from '@containerlabs/shared-nodejs-function';
+import { firebase } from '../../firebase';
 import Config from '../../config';
 import { PACKAGES_COLLECTION } from './collections';
 
@@ -29,7 +30,7 @@ const getPackages = async (parent, _params, { uid } : RequestContext) => {
   // TODO: add email verified middleware?
   // TODO: check state of graphql middleware in general, maybe move to diff JS framework
 
-  const packages = await indexQuery({
+  const packages = await indexQuery(firebase, {
     collection: PACKAGES_COLLECTION,
     index: 'userId',
   }, uid);
@@ -78,7 +79,7 @@ const trackPackage = async (parent: any, { input } : { input: PackageCreateInput
     ship_engine: data,
   };
 
-  return createWrapper({
+  return createWrapper(firebase, {
     collection: PACKAGES_COLLECTION,
   }, record)
     .then(() => ({
@@ -105,7 +106,7 @@ const updatePackage = (parent: any, { input } : { input: PackageUpdateInput }) =
     data.isActive = false;
   }
 
-  return updateWrapper({
+  return updateWrapper(firebase, {
     collection: PACKAGES_COLLECTION,
     id: input.key,
   }, data);

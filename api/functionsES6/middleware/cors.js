@@ -6,10 +6,6 @@ const corsMiddleware = cors({
     'https://libra-staging.containerlabs.io',
     'https://libra-alpha.containerlabs.io',
     'https://libra.containerlabs.io',
-
-    'https://staging.selenity-job-evaluator.com',
-    'https://alpha.selenity-job-evaluator.com',
-    'https://www.selenity-job-evaluator.com',
   ],
   methods: [
     'GET',
