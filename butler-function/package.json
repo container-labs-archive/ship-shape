@@ -79,7 +79,7 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "flow-bin": "^0.87.0",
+    "flow-bin": "^0.134.0",
     "jest": "^23.6.0"
   },
   "sideEffects": false,
