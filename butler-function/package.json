@@ -32,7 +32,7 @@
     "node": "10"
   },
   "dependencies": {
-    "@babel/runtime": "7.2.0",
+    "@babel/runtime": "7.11.2",
     "@containerlabs/react-apollo-shared": "^3.2.0",
     "@google-cloud/firestore": "^3.4.1",
     "axios": "^0.19.2",
