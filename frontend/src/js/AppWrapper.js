@@ -6,7 +6,7 @@ import { setConfig } from 'react-hot-loader';
 
 import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from '@apollo/client';
 import { ConnectedRouter } from 'connected-react-router';
 // import { detect } from 'detect-browser';
 import App from './pages/App/index.js';

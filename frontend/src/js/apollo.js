@@ -1,21 +1,22 @@
 // @flow
 
-import { graphql } from 'react-apollo';
-// import * as compose from 'lodash.flowright';
 import { flow as compose } from 'lodash';
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
 import { RetryLink } from 'apollo-link-retry';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import gql from 'graphql-tag';
+import {
+  gql,
+  ApolloClient,
+  HttpLink,
+  InMemoryCache,
+  from,
+} from '@apollo/client';
 import config from 'Config';
 import fetch from 'unfetch';
-import { authTokenFromStorage, removeTokenFromStorage } from './redux/auth/tokens';
-import { BrowserLogger } from '@containerlabs/react-apollo-shared';
+import { BrowserLogger } from '@containerlabs/shared-nodejs-web';
 
-const Logger = new BrowserLogger();
+const envKey = process.env.NODE_BUILD_ENV || process.env.NODE_ENV;
+
+const Logger = new BrowserLogger(envKey);
 
 // Raven.config('https://9755a41dc1c5433ca6ae1ee5f0460923@sentry.io/218185').install();
 
@@ -58,7 +59,7 @@ const errorLink = onError((args) => {
 
   if (networkError) {
     if (networkError.statusCode === 401) {
-      removeTokenFromStorage();
+      // removeTokenFromStorage();
       // location.reload();
     }
     if (process.env.NODE_ENV === 'staging') {
@@ -70,37 +71,37 @@ const errorLink = onError((args) => {
 });
 
 // add the authorization to the headers
-const authMiddleware = new ApolloLink((operation, forward) => {
-  Logger.log('authMiddleware', operation, forward);
-  const token = authTokenFromStorage();
+// const authMiddleware = new ApolloLink((operation, forward) => {
+//   Logger.log('authMiddleware', operation, forward);
+//   const token = authTokenFromStorage();
 
-  if (token !== null) {
-    operation.setContext({
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  }
+//   if (token !== null) {
+//     operation.setContext({
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//   }
 
-  return forward(operation);
-});
+//   return forward(operation);
+// });
 
-const loggerMiddleware = new ApolloLink((operation, forward) => {
-  Logger.log('loggerMiddleware', operation, forward);
-  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'staging') {
-    // Logger.log(operation.operationName);
-  }
-  return forward(operation).map((result) => {
-    if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'staging') {
-      // Logger.log(`received result from ${operation.operationName}`);
-    }
-    return result;
-  });
-});
+// const loggerMiddleware = new ApolloLink((operation, forward) => {
+//   Logger.log('loggerMiddleware', operation, forward);
+//   if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'staging') {
+//     // Logger.log(operation.operationName);
+//   }
+//   return forward(operation).map((result) => {
+//     if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'staging') {
+//       // Logger.log(`received result from ${operation.operationName}`);
+//     }
+//     return result;
+//   });
+// });
 
-const link = ApolloLink.from([
-  loggerMiddleware,
-  authMiddleware,
+const link = from([
+  // loggerMiddleware,
+  // authMiddleware,
   errorLink,
   retryLink,
   apiLink,
@@ -109,7 +110,7 @@ const link = ApolloLink.from([
 const client = new ApolloClient({
   link,
   cache: new InMemoryCache({
-    dataIdFromObject: object => object.key || null,
+    dataIdFromObject: (object) => object.key || null,
   }),
 });
 
@@ -117,6 +118,6 @@ export default client;
 
 export {
   compose,
-  graphql,
+  // graphql,
   gql,
 };
