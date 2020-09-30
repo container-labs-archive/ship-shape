@@ -46,7 +46,7 @@
     "jspdf-customfonts": "^0.0.4-rc.4",
     "lodash": "^4.17.15",
     "lodash.flowright": "3.5.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.0",
     "query-string": "^6.13.4",
     "raven-js": "^3.27.0",
     "react": "^16.12.0",
