@@ -911,13 +911,12 @@
     "@babel/helper-plugin-utils" "^7.8.0"
     lodash "^4.17.13"
 
-"@babel/plugin-transform-react-constant-elements@^7.8.0":
-  version "7.8.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-constant-elements/-/plugin-transform-react-constant-elements-7.8.0.tgz#0be3ff58956193ef6df3803bcf58df002e25919e"
-  integrity sha512-Rv1xUzuQK1tC66/4FxaG750bDr/Nv5AiSBmIwAK4bhksGUsl8XHPznASFchvsM7JMjI50gZvXMKmDJiKbyAfLw==
+"@babel/plugin-transform-react-constant-elements@^7.10.4":
+  version "7.10.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-constant-elements/-/plugin-transform-react-constant-elements-7.10.4.tgz#0f485260bf1c29012bb973e7e404749eaac12c9e"
+  integrity sha512-cYmQBW1pXrqBte1raMkAulXmi7rjg3VI6ZLg9QIic8Hq7BtYXaWuZSxsr2siOMI6SWwpxjWfnwhTUrd7JlAV7g==
   dependencies:
-    "@babel/helper-annotate-as-pure" "^7.8.0"
-    "@babel/helper-plugin-utils" "^7.8.0"
+    "@babel/helper-plugin-utils" "^7.10.4"
 
 "@babel/plugin-transform-react-display-name@^7.10.4":
   version "7.10.4"
