@@ -13,7 +13,7 @@ import gql from 'graphql-tag';
 import config from 'Config';
 import fetch from 'unfetch';
 import { authTokenFromStorage, removeTokenFromStorage } from './redux/auth/tokens';
-import BrowserLogger from './logger';
+import { BrowserLogger } from '@containerlabs/react-apollo-shared';
 
 const Logger = new BrowserLogger();
 

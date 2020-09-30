@@ -4,7 +4,7 @@ import {
   requireAdmin,
   queryLoader,
   waitingOnData,
-} from '@containerlabs/react-apollo-shared';
+} from '@containerlabs/shared-nodejs-web';
 import Loadable from './Loadable';
 import Loader from './Loader';
 import authenticated from './authenticated';
