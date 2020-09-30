@@ -48,7 +48,7 @@
     "graphql": "^14.4.1",
     "graphql-playground-middleware-express": "^1.7.21",
     "graphql-tools": "^6.0.5",
-    "helmet": "^3.22.0",
+    "helmet": "^4.1.1",
     "http-errors": "1.8.0",
     "lodash": "^4.17.20",
     "morgan": "^1.10.0",
