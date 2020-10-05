@@ -1063,10 +1063,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@containerlabs/shared-nodejs-web@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@containerlabs/shared-nodejs-web/-/shared-nodejs-web-1.2.0.tgz#1b6fe7ba202e273a2d01f862dc65264f643ab573"
-  integrity sha512-cJtz6uCFRaDygvgBy5weD0fNohaVmiJZGPOATJbI7f7a3uxokI20OpT0xwp74TiSDvR1qpkD0xprbdA6ZkufpA==
+"@containerlabs/shared-nodejs-web@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@containerlabs/shared-nodejs-web/-/shared-nodejs-web-1.3.0.tgz#520cf4c46c19e4e087e86847b992b636b185fb06"
+  integrity sha512-8Mo5bT59Txo+ZcJO8m9kGrC3DoozPkIUTbffQebvBBRnomAfSpNB0QchRyGYkm7M2lLuveHP6oXtRi8Rr55rkQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@material-ui/core" "^4.11.0"
