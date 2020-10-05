@@ -978,15 +978,13 @@
     core-js "^3.6.5"
     rimraf "^3.0.2"
 
-"@containerlabs/shared-nodejs-function@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@containerlabs/shared-nodejs-function/-/shared-nodejs-function-1.2.0.tgz#8a4c3d0c5391e7af8ff9b9470d64d288e032c4b2"
-  integrity sha512-6BQnhxWrF1AEdZkiagar64NPc9W5buZ5ik55JPX7YKVDfqdn2WT0PEsltQXm6FaiwiGj+YTZfT4FGdjVGCWuRA==
+"@containerlabs/shared-nodejs-function@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@containerlabs/shared-nodejs-function/-/shared-nodejs-function-1.17.0.tgz#8497f67e6a16110ee8262d07b337057576d7410f"
+  integrity sha512-UBtxMrSolaJ928Gv+tMqZWCWx2Y8WF5C3d4rcUsZmLct+3e2DCZUBKn1KzVGJ2AvC3m2HnPWb/mrZwurojCYOw==
   dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@firebase/app-types" "^0.6.1"
     "@google-cloud/firestore" "^4.2.0"
-    core-js "^3.2.1"
+    core-js "^3.6.5"
     firebase-admin "^9.0.0"
     lodash "^4.17.15"
 
@@ -1006,7 +1004,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@firebase/app-types@0.6.1", "@firebase/app-types@^0.6.1":
+"@firebase/app-types@0.6.1":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.6.1.tgz#dcbd23030a71c0c74fc95d4a3f75ba81653850e9"
   integrity sha512-L/ZnJRAq7F++utfuoTKX4CLBG5YR7tFO3PLzG1/oXXKEezJ0kRL3CMRoueBEmTCzVb/6SIs2Qlaw++uDgi5Xyg==
@@ -2901,7 +2899,7 @@ core-js-pure@^3.0.0:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.6.5.tgz#c79e75f5e38dbc85a662d91eea52b8256d53b813"
   integrity sha512-lacdXOimsiD0QyNf9BC/mxivNJ/ybBGJXQFKzRekp1WTHoVUWsUHEn+2T8GJAzzIhyOuXA+gOxCVN3l+5PLPUA==
 
-core-js@^3.0, core-js@^3.2.1, core-js@^3.6.5:
+core-js@^3.0, core-js@^3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
   integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
