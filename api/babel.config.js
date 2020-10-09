@@ -15,10 +15,6 @@ module.exports = function (api) {
     "add-module-exports",
     "transform-imports",
     "transform-inline-environment-variables",
-    "@babel/plugin-proposal-function-sent",
-    "@babel/plugin-proposal-export-namespace-from",
-    "@babel/plugin-proposal-numeric-separator",
-    "@babel/plugin-proposal-throw-expressions",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-syntax-import-meta",
     [
@@ -35,12 +31,6 @@ module.exports = function (api) {
       }
     ],
     "@babel/transform-runtime",
-    [
-      "@babel/plugin-transform-destructuring",
-      {
-        "loose": true
-      }
-    ],
     [
       "@babel/plugin-transform-spread",
       {
