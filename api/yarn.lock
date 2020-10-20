@@ -1326,10 +1326,10 @@
     "@babel/core" "^7.11.6"
     rimraf "^3.0.2"
 
-"@containerlabs/shared-nodejs-function@^1.19.0":
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/@containerlabs/shared-nodejs-function/-/shared-nodejs-function-1.19.0.tgz#4e9039e9fc466a237c717dd78d5ee1d9d66c27bd"
-  integrity sha512-0TSZlWxaO2qnHe4I+NRvsQPODC0E33Onu/6g1EUIccsvG5uCa2/Un268ZNIaa+BqkSxk+zrKW3EDhkX7cRDxow==
+"@containerlabs/shared-nodejs-function@^1.24.0":
+  version "1.24.0"
+  resolved "https://registry.yarnpkg.com/@containerlabs/shared-nodejs-function/-/shared-nodejs-function-1.24.0.tgz#72471f61a460a126325bda0b1cebfe3e8ff52b66"
+  integrity sha512-0YbILBlujs9LSVbspnD4p7cNsLIvUCRm9V2YtViPCXEFQ9We31qDB685NqWGU+XDFhfB6mLBIx60eTKf47LKcw==
   dependencies:
     "@google-cloud/firestore" "^4.2.0"
     core-js "^3.6.5"
