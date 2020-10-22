@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
-    "@containerlabs/shared-nodejs-web": "^1.3.0",
+    "@containerlabs/shared-nodejs-web": "^1.8.0",
     "@firebase/app": "^0.6.11",
     "@firebase/app-types": "^0.6.1",
     "@firebase/auth": "^0.14.9",
