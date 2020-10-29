@@ -1347,10 +1347,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@containerlabs/funpack@^1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@containerlabs/funpack/-/funpack-1.14.0.tgz#50176d1192a951fdc6c525d0501521e73dd8ae47"
-  integrity sha512-E2IG3EyLHKyj86GcMXTOW5EUAyL9u6LRISmV5l4FHIRGeq/JK0PDe3r8lc/0yXMeDlM8NkyJHGgjXkCvx4KROA==
+"@containerlabs/funpack@^1.21.0":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@containerlabs/funpack/-/funpack-1.21.0.tgz#3e5a868b460a8dd2028f53ab7cd0e4da157959df"
+  integrity sha512-qYGhKVd9gBW37Zh0+S0wxH9Ws+mxJa9wtl0jeA5vXR1J8PhwV15wMVScrfPwhQS44qIEfRiKijOFA//6lQchog==
   dependencies:
     "@babel/cli" "^7.11.6"
     "@babel/core" "^7.11.6"
